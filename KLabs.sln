@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KLabs.WebUI", "KLabs.WebUI\KLabs.WebUI.csproj", "{4AE80602-4974-45C0-8636-B71CB1E80DAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KLabs.Core", "KLabs.Core\KLabs.Core.csproj", "{0B1E8B67-7CFD-4219-8890-C82D6266CB5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KLabs.DataAccess", "KLabs.DataAccess\KLabs.DataAccess.csproj", "{A2654D47-E853-4D9F-BF6A-328C92ED4B97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KLabs.Business", "KLabs.Business\KLabs.Business.csproj", "{E2F7E1E0-A491-4C4D-B990-CBB89E8E56B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KLabs.Entities", "KLabs.Entities\KLabs.Entities.csproj", "{A1EB4F14-2EC1-445D-9E3B-D334AF2B28BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevExtreme NuGet.config", "DevExtreme NuGet.config", "{4A98A296-E538-4835-B57A-C645031CD044}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet.config = NuGet.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AE80602-4974-45C0-8636-B71CB1E80DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE80602-4974-45C0-8636-B71CB1E80DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE80602-4974-45C0-8636-B71CB1E80DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE80602-4974-45C0-8636-B71CB1E80DAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B1E8B67-7CFD-4219-8890-C82D6266CB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B1E8B67-7CFD-4219-8890-C82D6266CB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B1E8B67-7CFD-4219-8890-C82D6266CB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B1E8B67-7CFD-4219-8890-C82D6266CB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2654D47-E853-4D9F-BF6A-328C92ED4B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2654D47-E853-4D9F-BF6A-328C92ED4B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2654D47-E853-4D9F-BF6A-328C92ED4B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2654D47-E853-4D9F-BF6A-328C92ED4B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F7E1E0-A491-4C4D-B990-CBB89E8E56B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F7E1E0-A491-4C4D-B990-CBB89E8E56B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F7E1E0-A491-4C4D-B990-CBB89E8E56B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F7E1E0-A491-4C4D-B990-CBB89E8E56B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1EB4F14-2EC1-445D-9E3B-D334AF2B28BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1EB4F14-2EC1-445D-9E3B-D334AF2B28BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1EB4F14-2EC1-445D-9E3B-D334AF2B28BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1EB4F14-2EC1-445D-9E3B-D334AF2B28BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E2621FC-1FE8-4C81-84ED-8840CE2D06A8}
+	EndGlobalSection
+EndGlobal

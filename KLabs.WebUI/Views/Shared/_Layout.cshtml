@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - KLabs Teknoloji</title>
+
+    <link href="~/assets/css/vendor.min.css" rel="stylesheet" />
+    <link href="~/assets/css/plugins.min.css" rel="stylesheet" />
+    <link href="~/assets/css/style.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div id="preloader" class="preloader-activate preloader-active open_tm_preloader">
+        <div class="preloader-area-wrap">
+            <div class="spinner d-flex justify-content-center align-items-center h-100">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--====================  header area ====================-->
+    <div class="header-area">
+
+        <div class="header-top-bar-info bg-gray d-none d-lg-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="top-bar-wrap">
+
+                            <div class="top-bar-right">
+                                <ul class="top-bar-info">
+                                    <li class="info-item">
+                                        <a href="tel:01228899900" class="info-link">
+                                            <i class="info-icon fa fa-phone"></i>
+                                            <span class="info-text"><strong>0 (555) 555 55 55</strong></span>
+
+                                        </a>
+                                    </li>
+                                    <li class="info-item">
+                                        <a href="mailto:iletisim@klabsteknoloji.com" class="info-link">
+                                            <i class="info-icon fa fa-envelope"></i>
+                                            <span class="info-text">iletisim@klabsteknoloji.com</span>
+                                        </a>
+
+                                    </li>
+                                    <li class="info-item">
+                                        <i class="info-icon fa fa-map-marker-alt"></i>
+                                        @*<span class="info-text">
+                                                <b>Sitemiz Yapım Aşamasındadır</b>
+                                            </span>*@
+                                        <span class="info-text">
+                                            Eskişehir Karayolu 5. Km 2.Organize Sanayi Bölgesi Tasarım Teknokent Merkez - Kütahya | TÜRKİYE
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom-wrap  bg-white header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header position-relative">
+                            <!-- brand logo -->
+                            <div class="header__logo">
+                                <a asp-controller="Home" asp-action="Index">
+                                    <img src="~/assets/images/logo/logo-dark.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+
+                            <div class="header-right">
+
+                                <!-- navigation menu -->
+                                <div class="header__navigation menu-style-three d-none d-xl-block">
+                                    <nav class="navigation-menu">
+                                        <ul>
+                                            <li class="">
+                                                <a asp-action="Index" asp-controller="Home"><span>Anasayfa</span></a>
+                                            </li>
+                                            <li class="has-children has-children--multilevel-submenu">
+                                                <a href="#\"><span>Kurumsal</span></a>
+                                                <ul class="submenu">
+                                                    <!--<li class="has-children">
+                                                        <a href="about-us-01.html"><span>About us</span></a>
+                                                        <ul class="submenu">
+                                                            <li><a href="about-us-01.html"><span>About us 01</span></a></li>
+                                                            <li><a href="about-us-02.html"><span>About us 02</span></a></li>
+                                                            <li class="has-children">
+                                                                <a href="#"><span>Submenu Level Two</span></a>
+                                                                <ul class="submenu">
+                                                                    <li><a href="#"><span>Submenu Level Three</span></a></li>
+                                                                    <li><a href="#"><span>Submenu Level Three</span></a></li>
+                                                                    <li><a href="#"><span>Submenu Level Three</span></a></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>-->
+                                                    <li><a asp-action="Index" asp-controller="AboutUs"><span>Hakkımızda</span></a></li>
+                                                    <li><a asp-action="Privacy" asp-controller="Home"><span>Gizlilik Politikası</span></a></li>
+
+                                                </ul>
+                                            </li>
+                                            <li class="has-children has-children--multilevel-submenu">
+                                                <a href="#\"><span>Çözümlerimiz</span></a>
+                                                <ul class="submenu">
+                                                    <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>K - Muhasebe</span></a></li>
+                                                    <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>K - Voc</span></a></li>
+
+                                                </ul>
+                                            </li>
+                                            <li class="has-children has-children--multilevel-submenu">
+                                                <a href="#\"><span>Hizmetlerimiz</span></a>
+                                                <ul class="submenu">
+                                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Masaüstü Çözümler</span></a></li>
+                                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Web Çözümler</span></a></li>
+                                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Mobil Çözümler</span></a></li>
+                                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Yapay Zeka - Makine Öğrenmesi</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="">
+                                                <a asp-controller="Reference" asp-action="Index"><span>Referanslarımız</span></a>
+                                            </li>
+                                            <li class="">
+                                                <a asp-controller="AboutUs" asp-action="ContactUs"><span>İletişim</span></a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+
+                                <!-- mobile menu -->
+                                <div class="mobile-navigation-icon d-block d-xl-none" id="mobile-menu-trigger">
+                                    <i></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("Navigator", false)
+
+    <!--====================  End of header area  ====================-->
+    <div class="site-wrapper-reveal">
+        @RenderBody()
+    </div>
+
+    <!--====================  footer area ====================-->
+    <div class="footer-area-wrapper reveal-footer bg-gray">
+        <div class="footer-area section-space--ptb_80">
+            <div class="container">
+                <div class="row footer-widget-wrapper">
+                    <div class="col-lg-4 col-md-6 col-sm-6 footer-widget">
+                        <div class="footer-widget__logo mb-30">
+                            <img src="~/assets/images/logo/dark-logo-160x48.png" class="img-fluid" alt="">
+                        </div>
+                        <ul class="footer-widget__list">
+                            <li>Eskişehir Karayolu 5. Km 2.Organize Sanayi Bölgesi Tasarım Teknokent Merkez - Kütahya | TÜRKİYE</li>
+                            <li><a href="mailto:contact@aeroland.com" class="hover-style-link">iletisim@klabsteknoloji.com</a></li>
+                            <li><a href="tel:123344556" class="hover-style-link text-black font-weight--bold">0 (555) 555 55 55</a></li>
+                            <li><a href="http://www.klabsteknoloji.com" class="hover-style-link text-color-primary">www.klabsteknoloji.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 footer-widget">
+                        <h6 class="footer-widget__title mb-20">Kurumsal</h6>
+                        <ul class="footer-widget__list">
+                            <li><a asp-action="Index" asp-controller="AboutUs" class="hover-style-link">Hakkımızda</a></li>
+                            <li><a asp-action="Privacy" asp-controller="Home" class="hover-style-link">Gizlilik Politikası</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 footer-widget">
+                        <h6 class="footer-widget__title mb-20">Çözümlerimiz</h6>
+                        <ul class="footer-widget__list">
+                            <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">K - Muhasebe</a></li>
+                            <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">K - Voc</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6 footer-widget">
+                        <h6 class="footer-widget__title mb-20">Hizmetlerimiz</h6>
+                        <ul class="footer-widget__list">
+                            <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">Masaüstü Çözümler</a></li>
+                            <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">Web Çözümler</a></li>
+                            <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">Mobil Çözümler</a></li>
+                            <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">Yapay Zeka - Makine Ögrenmesi</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright-area section-space--pb_30">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-left">
+                        <span class="copyright-text">&copy; 2020 klabs. <a href="http://klabsteknoloji.com/">Tüm Hakları Saklıdır.</a></span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-right">
+                        <ul class="list ht-social-networks solid-rounded-icon">
+
+                            <li class="item">
+                                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="social-link hint--bounce hint--top hint--primary">
+                                    <i class="fab fa-twitter link-icon"></i>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-link hint--bounce hint--top hint--primary">
+                                    <i class="fab fa-facebook-f link-icon"></i>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-link hint--bounce hint--top hint--primary">
+                                    <i class="fab fa-instagram link-icon"></i>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="https://linkedin.com" target="_blank" aria-label="Linkedin" class="social-link hint--bounce hint--top hint--primary">
+                                    <i class="fab fa-linkedin link-icon"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====================  End of footer area  ====================-->
+    <!--====================  scroll top ====================-->
+    <a href="#" class="scroll-top" id="scroll-top">
+        <i class="arrow-top fal fa-long-arrow-up"></i>
+        <i class="arrow-bottom fal fa-long-arrow-up"></i>
+    </a>
+    <!--====================  End of scroll top  ====================-->
+    <!--====================  mobile menu overlay ====================-->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+        <div class="mobile-menu-overlay__inner">
+            <div class="mobile-menu-overlay__header">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 col-8">
+                            <!-- logo -->
+                            <div class="logo">
+                                <a asp-controller="Home" asp-action="Index">
+                                    <img src="~/assets/images/logo/logo-dark.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-4">
+                            <!-- mobile menu content -->
+                            <div class="mobile-menu-content text-right">
+                                <span class="mobile-navigation-close-icon" id="mobile-menu-close-trigger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-overlay__body">
+                <nav class="offcanvas-navigation">
+                    <ul>
+                        <li class="">
+                            <a asp-action="Index" asp-controller="Home"><span>Anasayfa</span></a>
+                        </li>
+                        <li class="has-children">
+                            <a href="#\"><span>Kurumsal</span></a>
+                            <ul class="sub-menu">
+                                <!--<li class="has-children">
+                                    <a href="about-us-01.html"><span>About us</span></a>
+                                    <ul class="submenu">
+                                        <li><a href="about-us-01.html"><span>About us 01</span></a></li>
+                                        <li><a href="about-us-02.html"><span>About us 02</span></a></li>
+                                        <li class="has-children">
+                                            <a href="#"><span>Submenu Level Two</span></a>
+                                            <ul class="submenu">
+                                                <li><a href="#"><span>Submenu Level Three</span></a></li>
+                                                <li><a href="#"><span>Submenu Level Three</span></a></li>
+                                                <li><a href="#"><span>Submenu Level Three</span></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>-->
+                                <li><a asp-action="Index" asp-controller="AboutUs"><span>Hakkımızda</span></a></li>
+                                <li><a asp-action="Privacy" asp-controller="Home"><span>Gizlilik Politikası</span></a></li>
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a href="#\"><span>Çözümlerimiz</span></a>
+                            <ul class="sub-menu">
+                                <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>K - Muhasebe</span></a></li>
+                                <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>K - Voc</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a href="#\"><span>Hizmetlerimiz</span></a>
+                            <ul class="sub-menu">
+                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Masaüstü Çözümler</span></a></li>
+                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Web Çözümler</span></a></li>
+                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Mobil Çözümler</span></a></li>
+                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Yapay Zeka - Makine Öğrenmesi</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a asp-controller="Reference" asp-action="Index"><span>Referanslarımız</span></a>
+                        </li>
+                        <li class="">
+                            <a asp-controller="AboutUs" asp-action="ContactUs"><span>İletişim</span></a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!--====================  End of mobile menu overlay  ====================-->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/assets/js/plugins.js"></script>
+    <script src="~/assets/js/vendor.js"></script>
+
+    <script src="~/assets/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

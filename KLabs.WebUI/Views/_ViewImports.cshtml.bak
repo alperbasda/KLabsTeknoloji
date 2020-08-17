@@ -1,0 +1,3 @@
+﻿@using KLabs.WebUI
+@using KLabs.WebUI.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

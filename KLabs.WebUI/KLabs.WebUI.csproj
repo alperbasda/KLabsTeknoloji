@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>91a4bfaf-5fc3-4957-8905-0e3e62307908</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Panel\Models\" />
+    <Folder Include="wwwroot\assets\images\demo-images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="DevExtreme.AspNet.Core" Version="19.2.6" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.5.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KLabs.Business\KLabs.Business.csproj" />
+  </ItemGroup>
+</Project>
