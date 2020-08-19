@@ -11,6 +11,8 @@ namespace KLabs.Core.DataAccess.Abstract
     {
         T Get(Expression<Func<T, bool>> filter, Expression<Func<T, object>>[] includes = null);
 
+        T First();
+
         T GetLast(Expression<Func<T, bool>> filter=null, Expression<Func<T, object>>[] includes = null);
 
         IEnumerable<T> GetList(Expression<Func<T, bool>> filter = null, Expression<Func<T, object>>[] includes = null);

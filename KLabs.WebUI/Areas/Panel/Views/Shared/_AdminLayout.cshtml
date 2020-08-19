@@ -52,7 +52,7 @@
     <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
         <div class="kt-header-mobile__logo">
             <a asp-area="Panel" asp-action="Index" asp-controller="Home">
-                
+
                 <img alt="Logo" src="#" style="width: 50px" />
             </a>
         </div>
@@ -76,7 +76,7 @@
                 <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
                     <div class="kt-aside__brand-logo">
                         <a asp-area="Panel" asp-action="Index" asp-controller="Home">
-                     
+
                             <img alt="Logo" src="#" style="width: 50px" />
                         </a>
                     </div>
@@ -117,34 +117,19 @@
                             <li class="kt-menu__item " aria-haspopup="true"><a href="@Url.Action("Index", "Home")" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-home"></i><span class="kt-menu__link-text">Anasayfa</span></a></li>
 
                             <li class="kt-menu__section ">
-                                <h4 class="kt-menu__section-text">Kullanıcı İşlemleri</h4>
-                                <i class="kt-menu__section-icon flaticon-more-v2"></i>
-                            </li>
-                            <li class="kt-menu__item " aria-haspopup="true"><a asp-controller="User" asp-action="UserList" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Kullanıcı Listesi</span></a></li>
-                            <li class="kt-menu__item " aria-haspopup="true"><a asp-controller="User" asp-action="CreateUser" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-user-add"></i><span class="kt-menu__link-text">Kullanıcı Ekle</span></a></li>
-
-                            <li class="kt-menu__section ">
-                                <h4 class="kt-menu__section-text">Kategori İşlemleri</h4>
-                                <i class="kt-menu__section-icon flaticon-more-v2"></i>
-                            </li>
-                            <li class="kt-menu__item " aria-haspopup="true"><a asp-controller="Category" asp-action="CategoryList" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list"></i><span class="kt-menu__link-text">Kategori Listesi</span></a></li>
-                            <li class="kt-menu__item " aria-haspopup="true"><a asp-controller="Category" asp-action="CreateCategory" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Kategori Ekle</span></a></li>
-
-                            <li class="kt-menu__section ">
-                                <h4 class="kt-menu__section-text">Ürün İşlemleri</h4>
-                                <i class="kt-menu__section-icon flaticon-more-v2"></i>
-                            </li>
-                            <li class="kt-menu__item " aria-haspopup="true"><a asp-controller="Product" asp-action="ProductList" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-2"></i><span class="kt-menu__link-text">Ürün Listesi</span></a></li>
-                            <li class="kt-menu__item " aria-haspopup="true"><a asp-controller="Product" asp-action="CreateProduct" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-label-button"></i><span class="kt-menu__link-text">Ürün Ekle</span></a></li>
-
-                            <li class="kt-menu__section ">
                                 <h4 class="kt-menu__section-text">Site İşlemleri</h4>
                                 <i class="kt-menu__section-icon flaticon-more-v2"></i>
                             </li>
-                            <li class="kt-menu__item " aria-haspopup="true"><a asp-controller="Section" asp-action="UpdateAboutUs" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-label-button"></i><span class="kt-menu__link-text">Hakkımızda</span></a></li>
-                            <li class="kt-menu__item " aria-haspopup="true"><a asp-controller="Section" asp-action="UpdateSection" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-analytics"></i><span class="kt-menu__link-text">Kısım 1</span></a></li>
-                            <li class="kt-menu__item " aria-haspopup="true"><a asp-controller="Home" asp-action="EditLogos" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cart"></i><span class="kt-menu__link-text">Logo</span></a></li>
-                            <li class="kt-menu__item " aria-haspopup="true"><a asp-controller="Home" asp-action="EditFirstImages" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-cart"></i><span class="kt-menu__link-text">Arka Plan</span></a></li>
+                            <li class="kt-menu__item " aria-haspopup="true"><a asp-area="Panel" asp-controller="AboutUs" asp-action="Index" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Hakkımızda & İletişim </span></a></li>
+                            <li class="kt-menu__item " aria-haspopup="true"><a asp-area="Panel" asp-controller="Privacy" asp-action="Index" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-2"></i><span class="kt-menu__link-text">Gizlilik Politikası</span></a></li>
+
+                            <li class="kt-menu__section ">
+                                <h4 class="kt-menu__section-text">İçerik İşlemleri</h4>
+                                <i class="kt-menu__section-icon flaticon-more-v2"></i>
+                            </li>
+                            <li class="kt-menu__item " aria-haspopup="true"><a asp-area="Panel" asp-controller="Reference" asp-action="Index" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list"></i><span class="kt-menu__link-text">Referanslar</span></a></li>
+                            <li class="kt-menu__item " aria-haspopup="true"><a asp-area="Panel" asp-controller="Service" asp-action="Index" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-world"></i><span class="kt-menu__link-text">Hizmetler</span></a></li>
+                            <li class="kt-menu__item " aria-haspopup="true"><a asp-area="Panel" asp-controller="Solution" asp-action="Index" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-circular-button"></i><span class="kt-menu__link-text">Çözümler</span></a></li>
 
                         </ul>
 
@@ -323,7 +308,8 @@
     <script src="~/js/toastr/toast.js"></script>
     <script src="~/js/Layout/jquery.validate.js"></script>
     <script src="~/js/Layout/jquery.validate.unobtrusive.js"></script>
-<script src="~/js/select2/select2.js"></script>
+    <script src="~/js/select2/select2.js"></script>
+    <script src="~/js/fancybox/jquery.fancybox.min.js"></script>
     @RenderSection("scripts", required: false)
 
 </body>

@@ -1,0 +1,54 @@
+﻿@using KLabs.Entities.ComplexTypes.Image
+@model List<ImageShowModel>
+@{
+    var m = (ImageOperationAdminModel)ViewData["Model"];
+}
+<div class="modal-content">
+    <form method="post" action="@Url.Action("AddImage", "Image")" enctype="multipart/form-data" id="imagezone">
+        <input type="hidden" value="@m.Id" name="Id" id="Id" />
+        <input type="hidden" value="@m.ImageType" name="ImageType" id="ImageType" />
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Resimler</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                if (!string.IsNullOrEmpty(Model[i].ShowPath))
+                {
+                    <div class="col-2 text-center" id="@Model[i].Id" >
+                        <a data-fancybox="gallery" class="kt-media kt-media--xl" href="@Model[i].ShowPath">
+                            <img src="@Model[i].ShowPath" alt="Resim">
+                        </a>
+                        <br/>
+                        <span>
+                            <a onclick="deleteImage(this)" data-message="Resim Silinsin mi ?" data-href="@Url.Action("DeleteImage", "Image", new {area = "Panel"})?path=@Model[i].DeletePath" data-remove-index="@Model[i].Id">
+                                <i class="fa fa-trash" style="cursor: pointer"></i>
+                            </a>
+                        </span>
+                    </div>
+                }
+            }
+            </div>
+            <div class="row pt-3">
+                <div class="col-12">
+                    <div class="dropzone dropzone-default dropzone-success dz-clickable">
+                        <div class="dropzone-msg dz-message needsclick">
+                            <div id="dropzonePreview"></div>
+                            <h3 class="dropzone-msg-title">Resim Sürükleyin Yada Seçmek İçin Tıklayın.</h3>
+                            <span class="dropzone-msg-desc">Sadece Resim Dosyası</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+        </div>
+    </form>
+    <script src="~/js/fancybox/Image.js"></script>
+</div>

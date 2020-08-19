@@ -6,6 +6,7 @@
   <ItemGroup>
     <Folder Include="Areas\Panel\Models\" />
     <Folder Include="wwwroot\assets\images\demo-images\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />

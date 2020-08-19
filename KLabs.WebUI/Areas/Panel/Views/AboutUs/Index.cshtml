@@ -1,0 +1,78 @@
+﻿@model KLabs.Entities.Concrete.AboutUs
+@{
+    ViewData["Title"] = "Hakkımızda";
+}
+
+
+
+<div class="kt-portlet">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                Hakkımızda
+                <small> Paragraf İçeriklerini && ile ayırabilirsiniz. </small>
+            </h3>
+        </div>
+    </div>
+    <div class="kt-portlet__body">
+
+        <!--begin::Form-->
+        <form class="kt-form" method="post" asp-area="Panel" asp-controller="AboutUs" asp-action="UpdateAboutUs">
+            <div class="kt-portlet__body">
+                <div class="kt-section kt-section--first">
+                    <div class="form-group">
+                        @Html.HiddenFor(s => s.Id)
+                        @Html.HiddenFor(s => s.CreationDate,new{value=DateTime.Now})
+                        @Html.LabelFor(s => s.Description, "Hakkımızda Yazısı")
+                        @Html.TextAreaFor(s => s.Description, new { @class = "form-control", placeholder = "Hakkımızda Yazısı Girin", rows = "5" })
+                        @Html.ValidationMessageFor(s => s.Description)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Address, "Firma Adresi")
+                        @Html.TextAreaFor(s => s.Address, new { @class = "form-control", placeholder = "Firma Adresi Girin", rows = "5" })
+                        @Html.ValidationMessageFor(s => s.Address)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.MailAddress, "Mail Adresi")
+                        @Html.TextBoxFor(s => s.MailAddress, new { @class = "form-control", placeholder = "Firma Mail Adresi Girin." })
+                        @Html.ValidationMessageFor(s => s.MailAddress)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.PhoneNumber, "Telefon")
+                        @Html.TextBoxFor(s => s.PhoneNumber, new { @class = "form-control", placeholder = "Firma Telefonu Girin." })
+                        @Html.ValidationMessageFor(s => s.PhoneNumber)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.FacebookLink, "Facebook")
+                        @Html.TextBoxFor(s => s.FacebookLink, new { @class = "form-control", placeholder = "Facebook Linki Girin." })
+                        @Html.ValidationMessageFor(s => s.FacebookLink)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.InsLink, "Instagram")
+                        @Html.TextBoxFor(s => s.InsLink, new { @class = "form-control", placeholder = "Instagram Linki Girin." })
+                        @Html.ValidationMessageFor(s => s.InsLink)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.TwitterLink, "Twitter")
+                        @Html.TextBoxFor(s => s.TwitterLink, new { @class = "form-control", placeholder = "Twitter Linki Girin." })
+                        @Html.ValidationMessageFor(s => s.TwitterLink)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.LinkedLink, "LinkedIn")
+                        @Html.TextBoxFor(s => s.LinkedLink, new { @class = "form-control", placeholder = "LinkedIn Linki Girin." })
+                        @Html.ValidationMessageFor(s => s.LinkedLink)
+                    </div>
+
+                </div>
+            </div>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <button type="submit" class="btn btn-primary width-100">Kaydet</button>
+                </div>
+            </div>
+        </form>
+
+        <!--end::Form-->
+
+    </div>
+</div>

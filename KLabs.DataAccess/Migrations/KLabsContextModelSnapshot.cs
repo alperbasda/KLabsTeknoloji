@@ -26,12 +26,14 @@ namespace KLabs.DataAccess.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FacebookLink")
@@ -44,9 +46,11 @@ namespace KLabs.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MailAddress")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TwitterLink")
@@ -104,6 +108,7 @@ namespace KLabs.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -121,12 +126,11 @@ namespace KLabs.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagePath")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -144,9 +148,6 @@ namespace KLabs.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -170,9 +171,6 @@ namespace KLabs.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

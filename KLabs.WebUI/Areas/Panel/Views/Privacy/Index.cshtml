@@ -1,0 +1,44 @@
+﻿@model KLabs.Entities.Concrete.Privacy
+@{
+    ViewData["Title"] = "Gizlilik Sözleşmesi";
+}
+
+
+
+<div class="kt-portlet">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                Gizlilik Sözleşmesi
+                <small> Paragraf İçeriklerini && ile ayırabilirsiniz. </small>
+            </h3>
+        </div>
+    </div>
+    <div class="kt-portlet__body">
+
+        <!--begin::Form-->
+        <form class="kt-form" method="post" asp-area="Panel" asp-controller="Privacy" asp-action="UpdatePrivacy">
+            <div class="kt-portlet__body">
+                <div class="kt-section kt-section--first">
+                    <div class="form-group">
+                        @Html.HiddenFor(s => s.Id)
+                        @Html.HiddenFor(s => s.CreationDate, new { value = DateTime.Now })
+                        @Html.LabelFor(s => s.Description, "Gizlilik Yazısı")
+                        @Html.TextAreaFor(s => s.Description, new { @class = "form-control", placeholder = "Gizlilik Yazısı Girin",rows="5" })
+                        @Html.ValidationMessageFor(s => s.Description)
+                    </div>
+                    
+
+                </div>
+            </div>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <button type="submit" class="btn btn-primary width-100">Kaydet</button>
+                </div>
+            </div>
+        </form>
+
+        <!--end::Form-->
+
+    </div>
+</div>

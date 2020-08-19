@@ -28,7 +28,7 @@ function JsItemGridRefresh(item, gridIds) {
     var redirect = $(item).data('href');
     var message = $(item).data('message');
     swal.fire({
-        "title": "Silmeİşlemi",
+        "title": "Silme İşlemi",
         "text": message,
         "type": "success",
         "showCloseButton": true,
@@ -48,6 +48,7 @@ function JsItemGridRefresh(item, gridIds) {
                 url: redirect,
                 dataType: "json",
                 success: function (data) {
+                    
                     if (data.Success) {
                         $.each(gridIds.split(','),
                             function(index, item) {
@@ -102,8 +103,9 @@ function deleteItem(item) {
 
 function FillBasicModal(item) {
     $('#loading').css('display', 'block');
-
+    
     $.get($(item).data('fill-url'), function (data) {
+            
         $('#basicmodalcontent').children('div').remove();
         $('#basicmodalcontent').append(data);
     })

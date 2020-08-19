@@ -27,6 +27,14 @@ namespace KLabs.Core.DataAccess.Concrete
             }
         }
 
+        public TEntity First()
+        {
+            using (TContext context = new TContext())
+            {
+                return context.Set<TEntity>().FirstOrDefault();
+            }
+        }
+
         public TEntity GetLast(Expression<Func<TEntity, bool>> filter = null, Expression<Func<TEntity, object>>[] includes = null)
         {
             using (TContext context = new TContext())
