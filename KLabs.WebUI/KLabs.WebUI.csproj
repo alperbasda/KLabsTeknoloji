@@ -20,4 +20,14 @@
   <ItemGroup>
     <ProjectReference Include="..\KLabs.Business\KLabs.Business.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Update="Areas\Panel\Views\Service\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Panel\Views\Solution\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

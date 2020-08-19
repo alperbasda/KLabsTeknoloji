@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using KLabs.Business.Constants.Statics;
 using KLabs.Entities.ComplexTypes.Image;
 using KLabs.Entities.Enums;
 using KLabs.Entities.Responses;
@@ -21,11 +22,20 @@ namespace KLabs.WebUI.Helpers.ImageHelper
 
         public static string ServicePath => "Service";
 
+        public static string ServiceHomePagePath => "ServiceHome";
+
+        public static string SolutionHomePagePath => "SolutionHome";
+
+        public static string LogoPath => "Service";
+
         public static void CreateBaseDirectories()
         {
             DirectoryCreate(Path.Combine(_rootBase, ReferencePath));
             DirectoryCreate(Path.Combine(_rootBase, SolutionPath));
+            DirectoryCreate(Path.Combine(_rootBase, SolutionHomePagePath));
             DirectoryCreate(Path.Combine(_rootBase, ServicePath));
+            DirectoryCreate(Path.Combine(_rootBase, ServiceHomePagePath));
+            DirectoryCreate(Path.Combine(_rootBase, LogoPath));
 
         }
 
@@ -48,7 +58,7 @@ namespace KLabs.WebUI.Helpers.ImageHelper
 
         public static bool DirectoryDelete(string path)
         {
-            path = Path.Combine(_rootBase, path);
+            
             if (Directory.Exists(path))
             {
                 try
@@ -80,7 +90,8 @@ namespace KLabs.WebUI.Helpers.ImageHelper
                 return new DataResponse
                 {
                     Success = true,
-                    Message = "Resim(ler) Kayıt Edildi"
+                    Message = "Resim(ler) Kayıt Edildi",
+                    Data = $"../{path.Replace("wwwroot/", "").Replace('\\', '/')}"
                 };
             }
             catch (Exception ex)
@@ -105,7 +116,7 @@ namespace KLabs.WebUI.Helpers.ImageHelper
                     {
                         Id = model.Id,
                         ImageType = model.ImageType,
-                        ShowPath = $"../{file.Replace("wwwroot/", "")}",
+                        ShowPath = $"../{file.Replace("wwwroot/", "").Replace('\\', '/')}",
                         DeletePath = file
                     });
                 }
@@ -114,6 +125,34 @@ namespace KLabs.WebUI.Helpers.ImageHelper
                 
 
             return imageList;
+        }
+
+        public static ImageShowModel FileFirstPath(ImageOperationAdminModel model)
+        {
+            var path = Route(model);
+            
+            if (Directory.Exists(path))
+            {
+                foreach (var file in Directory.GetFiles(path))
+                {
+
+                    return new ImageShowModel
+                    {
+                        Id = model.Id,
+                        ImageType = model.ImageType,
+                        ShowPath = $"../{file.Replace("wwwroot/", "").Replace('\\','/')}",
+                        DeletePath = file
+                    };
+                }
+            }
+
+
+            return new ImageShowModel
+            {
+                Id = model.Id,
+                ImageType = model.ImageType,
+                ShowPath = GetLogoPath()
+            };
         }
 
         public static DataResponse DeleteFile(string path)
@@ -150,6 +189,18 @@ namespace KLabs.WebUI.Helpers.ImageHelper
         public static string RouteFile(ImageOperationAdminModel model,string fileName)
         {
             return Path.Combine(_rootBase, model.ImageType.ToString(), model.Id.ToString(),fileName);
+        }
+
+        public static string GetLogoPath()
+        {
+            if (string.IsNullOrEmpty(StaticMember.LogoPath))
+            {
+                var files = FilePaths(new ImageOperationAdminModel
+                    { Id = Guid.Empty, ImageType = ImageType.Logo });
+                StaticMember.LogoPath = $"../{files.First().ShowPath}";
+            }
+            
+            return StaticMember.LogoPath;
         }
 
     }

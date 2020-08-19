@@ -4,6 +4,9 @@
     {
         Reference,
         Solution,
-        Service
+        SolutionHomePage,
+        Service,
+        ServiceHomePage,
+        Logo
     }
 }

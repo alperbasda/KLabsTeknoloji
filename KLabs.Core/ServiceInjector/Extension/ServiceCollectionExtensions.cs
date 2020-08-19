@@ -15,5 +15,6 @@ namespace KLabs.Core.ServiceInjector.Extension
 
             return ServiceTool.Create(services);
         }
+
     }
 }

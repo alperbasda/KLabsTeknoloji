@@ -1,4 +1,5 @@
-﻿@{
+﻿@using KLabs.Business.Constants.Statics
+@{
     ViewData["Title"] = "Hakkımızda";
 }
 <div class="about-banner-wrap banner-space about-us-bg">
@@ -7,9 +8,13 @@
             <div class="col-lg-8 ml-auto mr-auto">
                 <div class="about-banner-content text-center">
                     <h1 class="mb-15 text-white">Hakkımızda</h1>
-                    <h5 class="font-weight--normal text-white">
-                        Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.
-                    </h5>
+                    @foreach (var item in StaticMember.AboutUs.Description.Split("&&"))
+                    {
+                        <p class="font-weight--normal text-white">
+                            @item
+                        </p>
+                    }
+                    
                 </div>
             </div>
         </div>
@@ -29,7 +34,7 @@
                                 <div class="image-box-wrap">
                                     <div class="box-image">
                                         <div class="default-image">
-                                            <img class="img-fulid" src="assets/images/icons/mitech-box-image-style-06-image-01-120x120.png" alt="">
+                                            <img class="img-fulid" src="assets/images/icons/mitech-box-image-style-06-image-01-120x120.png" alt="klabs teknoloji hakkımızda">
                                         </div>
                                     </div>
                                     <div class="content">
@@ -51,7 +56,7 @@
                                 <div class="image-box-wrap">
                                     <div class="box-image">
                                         <div class="default-image">
-                                            <img class="img-fulid" src="assets/images/icons/mitech-box-image-style-06-image-03-120x120.png" alt="">
+                                            <img class="img-fulid" src="assets/images/icons/mitech-box-image-style-06-image-03-120x120.png" alt="klabs teknoloji hakkımızda">
                                         </div>
                                     </div>
                                     <div class="content">
@@ -71,7 +76,7 @@
 
                 <div class="section-under-heading text-center section-space--mt_60">
                     İşinizi kolaylaştırmak.
-                    <a href="#">Bizim işimiz !</a>
+                    <a href="#/">Bizim işimiz !</a>
                 </div>
 
             </div>
@@ -85,7 +90,7 @@
         <div class="row align-items-center">
             <div class="col-lg-7">
                 <div class="image">
-                    <img class="img-fluid" src="assets/images/banners/robot.png" alt="">
+                    <img class="img-fluid" src="assets/images/banners/robot.png" alt="klabs teknoloji hakkımızda">
                 </div>
             </div>
 
@@ -102,13 +107,13 @@
                                     <div class="main-content">
                                         <h6 class="heading">Şimdi Arayın!</h6>
                                         <div class="text">
-                                            <a href="tel:123344556" class="hover-style-link text-black font-weight--bold">0 (555) 555 55 55</a>
+                                            <a href="tel:@StaticMember.AboutUs.PhoneNumber" class="hover-style-link text-black font-weight--bold">@StaticMember.AboutUs.PhoneNumber</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </a>
-                        <a href="mailto:hello@mitech.com" class="single-contact-list">
+                        <a href="mailto:@StaticMember.AboutUs.MailAddress" class="single-contact-list">
                             <div class="content-wrap">
                                 <div class="content">
                                     <div class="icon">
@@ -116,7 +121,7 @@
                                     </div>
                                     <div class="main-content">
                                         <h6 class="heading">Mail Gönderin</h6>
-                                        <a href="mailto:contact@aeroland.com" class="hover-style-link text-color-primary">iletisim@klabsteknoloji.com</a>
+                                        <a href="mailto:@StaticMember.AboutUs.MailAddress" class="hover-style-link text-color-primary">@StaticMember.AboutUs.MailAddress</a>
                                     </div>
                                 </div>
                             </div>

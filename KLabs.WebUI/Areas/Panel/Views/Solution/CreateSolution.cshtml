@@ -1,0 +1,51 @@
+﻿@model KLabs.Entities.Concrete.Solution
+@{
+    ViewData["Title"] = "Çözüm Ekle";
+}
+
+
+
+<div class="kt-portlet">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                Çözüm Ekle
+                <small> Paragraf İçeriklerini && ile ayırabilirsiniz. </small>
+            </h3>
+        </div>
+    </div>
+    <div class="kt-portlet__body">
+
+        <!--begin::Form-->
+        <form class="kt-form" method="post" asp-area="Panel" asp-controller="Solution" asp-action="CreateSolution">
+            <div class="kt-portlet__body">
+                <div class="kt-section kt-section--first">
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.Name, "Çözüm Adı")
+                        @Html.TextBoxFor(s => s.Name, new { @class = "form-control", placeholder = "Çözüm Adını Girin." })
+                        @Html.ValidationMessageFor(s => s.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.HiddenFor(s => s.CreationDate, new { value = DateTime.Now })
+                        @Html.LabelFor(s => s.Description, "Açıklama")
+                        @Html.TextAreaFor(s => s.Description, new { @class = "form-control", placeholder = "Açıklama Girin", rows = "5" })
+                        @Html.ValidationMessageFor(s => s.Description)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(s => s.ShortDescription, "Kısa Açıklama")
+                        @Html.TextAreaFor(s => s.ShortDescription, new { @class = "form-control", placeholder = "Kısa Açıklama Girin", rows = "3" })
+                        @Html.ValidationMessageFor(s => s.ShortDescription)
+                    </div>
+                </div>
+            </div>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <button type="submit" class="btn btn-primary width-100">Kaydet</button>
+                </div>
+            </div>
+        </form>
+
+        <!--end::Form-->
+
+    </div>
+</div>

@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
+using AutoMapper;
 using DevExtreme.AspNet.Mvc;
 using KLabs.Business.Abstract;
 using KLabs.Business.Extensions.DevExtremeQueryableExtension;
 using KLabs.Core.DataAccess.Abstract;
 using KLabs.DataAccess.Abstract;
+using KLabs.Entities.ComplexTypes.Reference;
 using KLabs.Entities.Concrete;
 using KLabs.Entities.Responses;
 using Microsoft.EntityFrameworkCore;
@@ -15,11 +18,13 @@ namespace KLabs.Business.Concrete
     {
         private IReferenceDal _referenceDal;
         private IQueryableRepositoryBase<Reference> _queryable;
+        private IMapper _mapper;
 
-        public ReferenceManager(IReferenceDal referenceDal, IQueryableRepositoryBase<Reference> queryable)
+        public ReferenceManager(IReferenceDal referenceDal, IQueryableRepositoryBase<Reference> queryable, IMapper mapper)
         {
             _referenceDal = referenceDal;
             _queryable = queryable;
+            _mapper = mapper;
         }
 
         public DataResponse ReferenceList(DataSourceLoadOptions loadOptions)
@@ -108,6 +113,19 @@ namespace KLabs.Business.Concrete
                 Message = "Referans Silinirken Hata Oluştu",
                 Data = reference,
                 StatusCode = HttpStatusCode.BadRequest
+            };
+        }
+
+        public DataResponse HomePageReferences(int page)
+        {
+            var take = 6;
+            var skip = take * page;
+            return new DataResponse
+            {
+                Data = _mapper.Map<List<HomePageReferenceSwiperModel>>(_referenceDal.GetListSkipTake(skip,take)),
+                Success = true,
+                Message = $"Referanslar {page}. sayfa",
+                StatusCode = HttpStatusCode.OK
             };
         }
     }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@using KLabs.Business.Constants.Statics
+@{
     ViewData["Title"] = "İletişim";
 }
 @section Navigator{ 
@@ -80,9 +81,9 @@
                             <div class="conact-info-wrap mt-30">
                                 <h5 class="heading mb-20">Kütahya</h5>
                                 <ul class="conact-info__list">
-                                    <li>Eskişehir Karayolu 5. Km 2.Organize Sanayi Bölgesi Tasarım Teknokent Merkez - Kütahya | TÜRKİYE</li>
-                                    <li><a href="mailto:contact@aeroland.com" class="hover-style-link text-color-primary">iletisim@klabsteknoloji.com</a></li>
-                                    <li><a href="tel:123344556" class="hover-style-link text-black font-weight--bold">0 (555) 555 55 55</a></li>
+                                    <li>@StaticMember.AboutUs.Address</li>
+                                    <li><a href="mailto:@StaticMember.AboutUs.MailAddress" class="hover-style-link text-color-primary">@StaticMember.AboutUs.MailAddress</a></li>
+                                    <li><a href="tel:@StaticMember.AboutUs.PhoneNumber" class="hover-style-link text-black font-weight--bold">@StaticMember.AboutUs.PhoneNumber</a></li>
                                 </ul>
                             </div>
                         </div>

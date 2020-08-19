@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using KLabs.Business.Abstract;
+using KLabs.Business.Concrete;
+using KLabs.Business.Constants.Statics;
 using KLabs.Core.ServiceInjector.DependencyResolvers;
 using KLabs.Core.ServiceInjector.Extension;
 using KLabs.Core.ServiceInjector.Utilities.IoC;
@@ -27,6 +31,7 @@ namespace KLabs.WebUI
 
         public IConfiguration Configuration { get; }
 
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -44,7 +49,6 @@ namespace KLabs.WebUI
             {
                 new CoreModule(),
             });
-
             ImageConfig.CreateBaseDirectories();
         }
 

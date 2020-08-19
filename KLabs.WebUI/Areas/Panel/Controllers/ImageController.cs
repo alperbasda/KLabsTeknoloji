@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KLabs.Business.Constants.Statics;
 using KLabs.Entities.ComplexTypes.Image;
 using KLabs.Entities.Enums;
 using KLabs.Entities.Responses;
@@ -29,6 +30,9 @@ namespace KLabs.WebUI.Areas.Panel.Controllers
 
         public async Task<IActionResult> AddImage(ImageOperationAdminModel model)
         {
+            if (model.ImageType == ImageType.Logo)
+                ImageConfig.DirectoryDelete(ImageConfig.Route(model));
+
             var response = new DataResponse();
             var files = GetImage();
             if (files.Count == 0)
@@ -39,6 +43,9 @@ namespace KLabs.WebUI.Areas.Panel.Controllers
                 if (!response.Success)
                     return Json(response);
             }
+
+            if (model.ImageType == ImageType.Logo)
+                StaticMember.LogoPath = response.Data.ToString();
 
             return Json(response);
         }

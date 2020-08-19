@@ -1,4 +1,7 @@
-﻿@{
+﻿@using KLabs.Business.Constants.Statics
+@using KLabs.Entities.Enums
+@model List<KLabs.Entities.ComplexTypes.Service.HomePageServiceModel>
+@{
     ViewData["Title"] = "Anasayfa";
 }
 
@@ -102,23 +105,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--<div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        How working process is simplified? <span>
-                                            <i class="fas fa-chevron-down"></i>
-                                            <i class="fas fa-chevron-up"></i>
-                                        </span>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>We reduce redundant complex calculations and lengthy erroneous code texts with simpler ones to ensure Mitech would run seamlessly and the design is reserved in its best form when viewed from a wide range of mobile devices & browsers. </p>
-                                </div>
-                            </div>
-                        </div>-->
+                
                     </div>
 
                 </div>
@@ -185,77 +172,26 @@
             <div class="col-12">
                 <div class="feature-images__two small-mt__10">
                     <div class="modern-grid-image-box row row--30">
-
-                        <div class="single-item wow move-up col-lg-6 col-md-6 section-space--mt_60  small-mt__40">
-                            <!-- ht-box-icon Start -->
-                            <a href="#" class="ht-box-images style-02">
-                                <div class="image-box-wrap">
-                                    <div class="box-image">
-                                        <img class="img-fulid" src="assets/images/icons/mitech-processing-service-image-01-80x83.png" alt="">
+                        @foreach (var service in Model)
+                        {
+                            
+                            <div class="single-item wow move-up col-lg-6 col-md-6 section-space--mt_60  small-mt__40">
+                                <!-- ht-box-icon Start -->
+                                <a href="#" class="ht-box-images style-02">
+                                    <div class="image-box-wrap">
+                                        <div class="box-image">
+                                            <img class="img-fulid" src="@service.ImagePath" alt="Klabs Teknoloji @service.Name">
+                                        </div>
+                                        <div class="content">
+                                            <h6 class="heading">
+                                                @service.Name
+                                            </h6>
+                                        </div>
                                     </div>
-                                    <div class="content">
-                                        <h6 class="heading">
-                                            Masaüstü Çözümler
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- ht-box-icon End -->
-                        </div>
-
-                        <div class="single-item wow move-up col-lg-6 col-md-6 section-space--mt_60">
-                            <!-- ht-box-icon Start -->
-                            <a href="#" class="ht-box-images style-02">
-                                <div class="image-box-wrap">
-                                    <div class="box-image">
-                                        <img class="img-fulid" src="assets/images/icons/mitech-box-image-style-01-image-01-100x108.png" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="heading">
-                                            Mobil Çözümler
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- ht-box-icon End -->
-                        </div>
-
-
-                        <div class="single-item wow move-up col-lg-6 col-md-6 section-space--mt_60">
-                            <!-- ht-box-icon Start -->
-                            <a href="#" class="ht-box-images style-02">
-                                <div class="image-box-wrap">
-                                    <div class="box-image">
-                                        <img class="img-fulid" src="assets/images/icons/mitech-processing-service-image-04-80x83.png" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="heading">
-                                            Responsive Web Çözümleri
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- ht-box-icon End -->
-                        </div>
-
-
-
-                        <div class="single-item wow move-up col-lg-6 col-md-6 section-space--mt_60">
-                            <!-- ht-box-icon Start -->
-                            <a href="#" class="ht-box-images style-02">
-                                <div class="image-box-wrap">
-                                    <div class="box-image">
-                                        <img class="img-fulid" src="assets/images/icons/artificial-intelligence.png" alt="">
-                                    </div>
-                                    <div class="content">
-                                        <h6 class="heading">
-                                            Makine Ögrenime ve Yapay Zeka Çözümleri
-                                        </h6>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- ht-box-icon End -->
-                        </div>
+                                </a>
+                                <!-- ht-box-icon End -->
+                            </div>
+                        }
 
                     </div>
                 </div>
@@ -286,244 +222,21 @@
                 <!-- section-title-wrap Start -->
             </div>
         </div>
+        
+        <div id="load-solutions">
 
-        <div class="row">
-
-            <div class="col-12">
-                <div class="row small-mt__30">
-
-                    <div class="col-lg-3 col-md-6 mt-30">
-                        <!-- Box large image warap Start -->
-                        <a href="#" class="box-large-image__two">
-                            <div class="box-large-image__two__box">
-                                <div class="box-large-image__midea">
-                                    <div class="single-gallery__thum bg-item-images bg-img" data-bg="assets/images/box-image/desktop-app.png"></div>
-                                </div>
-
-                                <div class="box-info">
-                                    <h5 class="heading">Ön Muhasebe Uygulaması</h5>
-                                    <div class="box-more-info">
-                                        <div class="text">İş süreç yönetiminizi kolaylaştıracak ve hızlandıracak uygulama çözümü.</div>
-                                        <div class="btn">
-                                            <i class="button-icon far fa-long-arrow-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- Box large image warap End -->
-                    </div>
-
-                    <div class="col-lg-6 col-md-6  mt-30">
-                        <!-- Box large image warap Start -->
-                        <a href="#" class="box-large-image__two">
-                            <div class="box-large-image__two__box">
-                                <div class="box-large-image__midea">
-                                    <div class="single-gallery__thum bg-item-images bg-img" data-bg="assets/images/box-image/sinav-yonetim.png"></div>
-                                </div>
-
-                                <div class="box-info">
-                                    <h5 class="heading">Sınav Yönetim Portalı</h5>
-                                    <div class="box-more-info">
-                                        <div class="text">Sınav, belge ve adaylarınızı kolaylıkla yönetip belgelendirme işlemlerini tamamlayın.</div>
-                                        <div class="btn">
-                                            <i class="button-icon far fa-long-arrow-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- Box large image warap End -->
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mt-30">
-                        <!-- Box large image warap Start -->
-                        <a href="#" class="box-large-image__two">
-                            <div class="box-large-image__two__box">
-                                <div class="box-large-image__midea">
-                                    <div class="single-gallery__thum bg-item-images bg-img" data-bg="assets/images/box-image/responsive-web-app.png"></div>
-                                </div>
-
-                                <div class="box-info">
-                                    <h5 class="heading">Responsive <br /> Site & Mobil</h5>
-                                    <div class="box-more-info">
-                                        <div class="text">Tüm cihaz çözünürlüklerine uygun bir çok web site ve mobil uygulama çözümü .</div>
-                                        <div class="btn">
-                                            <i class="button-icon far fa-long-arrow-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- Box large image warap End -->
-                    </div>
-
-
-
-                </div>
-                <div class="col-lg-12">
-                    <div class="feature-list-button-box mt-40 text-center">
-                        <a href="#" class="ht-btn ht-btn-md">Tümünü Gör</a>
-                        <a href="#" class="ht-btn ht-btn-md ht-btn--outline">Demo Talebi</a>
-                    </div>
-                </div>
-
+        </div>
+        <div class="col-lg-12">
+            <div class="feature-list-button-box mt-40 text-center">
+                <a class="ht-btn ht-btn-md" id="load-more" onclick="loadMore()">Devamını Gör</a>
+                <a asp-controller="AboutUs" asp-action="ContactUs" id="demo-btn" class="ht-btn ht-btn-md ht-btn--outline">Demo Talebi</a>
             </div>
         </div>
+        
     </div>
 </div>
 <!--===========  feature-large-images-wrapper  End =============-->
-<!--====================  timeline section ====================-->
-<!--<div class="testimonial-slider-area bg-gray section-space--ptb_100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title-wrap text-center section-space--mb_40">
-                    <h6 class="section-sub-title mb-20">Proje Adımları</h6>
-                    <h3 class="heading">
-                        Nasıl <span class="text-color-primary"> çalışıyoruz.</span>
-                    </h3>
-                </div>
-                <div class="timeline-area section-space--pt_60">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="ht-timeline style-01">
-                                <ul class="tm-timeline-list ht-animation-queue">
-                                    <li class="line"></li>
-                                    <li class="item animate">
-                                        <div class="dots">
-                                            <div class="middle-dot"></div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6 timeline-col left timeline-feature">
-                                                <div class="inner">
-                                                    <div class="date-wrap">
-                                                    </div>
-
-                                                    <div class="photo">
-                                                        <img src="assets/images/timeline/timeline-image-01.jpg" alt="timeline-image-01" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 timeline-col right timeline-info">
-                                                <div class="inner">
-                                                    <div class="content-wrap">
-                                                        <div class="content-body">
-                                                            <h6 class="heading">Planlama</h6>
-
-                                                            <div class="text">
-                                                                Size en uygun çözümümüzü  <a href="#/"><span class="text-color-primary">  gizlilik politikalarımız</span> </a> çerçevesinde görüşüyoruz.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="item animate">
-                                        <div class="dots">
-                                            <div class="middle-dot"></div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6 timeline-col left timeline-feature">
-                                                <div class="inner">
-                                                    <div class="date-wrap">
-                                                    </div>
-
-                                                    <div class="photo">
-                                                        <img src="assets/images/timeline/timeline-image-02.jpg" alt="timeline-image-01" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 timeline-col right timeline-info">
-                                                <div class="inner">
-                                                    <div class="content-wrap">
-                                                        <div class="content-body">
-                                                            <h6 class="heading">Kodlama</h6>
-
-                                                            <div class="text">
-                                                                Sizlerle sürekli iletişimde kalarak adım adım projelerinizi tamamlıyoruz.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="item animate">
-                                        <div class="dots">
-                                            <div class="middle-dot"></div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6 timeline-col left timeline-feature">
-                                                <div class="inner">
-                                                    <div class="date-wrap">
-                                                    </div>
-
-                                                    <div class="photo">
-                                                        <img src="assets/images/timeline/blog-07-500x350.jpg" alt="timeline-image-01" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 timeline-col right timeline-info">
-                                                <div class="inner">
-                                                    <div class="content-wrap">
-                                                        <div class="content-body">
-                                                            <h6 class="heading">Test & Geri Bildirim</h6>
-
-                                                            <div class="text">
-                                                                Tamamlanan projeyi sizlerle birlikte test ederek geri bildirim alıyoruz.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="item animate">
-                                        <div class="dots">
-                                            <div class="middle-dot"></div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6 timeline-col left timeline-feature">
-                                                <div class="inner">
-                                                    <div class="date-wrap">
-                                                    </div>
-
-                                                    <div class="photo">
-                                                        <img src="assets/images/timeline/timeline-image-02.jpg" alt="timeline-image-01" class="img-fluid">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 timeline-col right timeline-info">
-                                                <div class="inner">
-                                                    <div class="content-wrap">
-                                                        <div class="content-body">
-                                                            <h6 class="heading">Geliştirme ve Teslim</h6>
-
-                                                            <div class="text">
-                                                                Sizlerden gelen geri bildirimlerle projenizi son haline getirip teslim ediyoruz.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
-<!--====================  End of timeline section  ====================-->
 <!--====================  brand logo slider area ====================-->
 <div class="brand-logo-slider-area section-space--ptb_60">
     <div class="container">
@@ -533,96 +246,7 @@
                 <div class="brand-logo-slider__container-area">
                     <div class="swiper-container brand-logo-slider__container">
                         <div class="swiper-wrapper brand-logo-slider__one">
-                            <div class="swiper-slide brand-logo brand-logo--slider">
-                                <a href="#">
-                                    <div class="brand-logo__image">
-                                        <img src="assets/images/brand/mitech-client-logo-01.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="brand-logo__image-hover">
-                                        <img src="assets/images/brand/mitech-client-logo-01-hover.png" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide brand-logo brand-logo--slider">
-                                <a href="#">
-                                    <div class="brand-logo__image">
-                                        <img src="assets/images/brand/mitech-client-logo-02.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="brand-logo__image-hover">
-                                        <img src="assets/images/brand/mitech-client-logo-02-hover.png" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide brand-logo brand-logo--slider">
-                                <a href="#">
-                                    <div class="brand-logo__image">
-                                        <img src="assets/images/brand/mitech-client-logo-03.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="brand-logo__image-hover">
-                                        <img src="assets/images/brand/mitech-client-logo-03-hover.png" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide brand-logo brand-logo--slider">
-                                <a href="#">
-                                    <div class="brand-logo__image">
-                                        <img src="assets/images/brand/mitech-client-logo-04.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="brand-logo__image-hover">
-                                        <img src="assets/images/brand/mitech-client-logo-04-hover.png" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide brand-logo brand-logo--slider">
-                                <a href="#">
-                                    <div class="brand-logo__image">
-                                        <img src="assets/images/brand/mitech-client-logo-05.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="brand-logo__image-hover">
-                                        <img src="assets/images/brand/mitech-client-logo-05-hover.png" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide brand-logo brand-logo--slider">
-                                <a href="#">
-                                    <div class="brand-logo__image">
-                                        <img src="assets/images/brand/mitech-client-logo-06.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="brand-logo__image-hover">
-                                        <img src="assets/images/brand/mitech-client-logo-06-hover.png" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide brand-logo brand-logo--slider">
-                                <a href="#">
-                                    <div class="brand-logo__image">
-                                        <img src="assets/images/brand/mitech-client-logo-07.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="brand-logo__image-hover">
-                                        <img src="assets/images/brand/mitech-client-logo-07-hover.png" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide brand-logo brand-logo--slider">
-                                <a href="#">
-                                    <div class="brand-logo__image">
-                                        <img src="assets/images/brand/mitech-client-logo-08.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="brand-logo__image-hover">
-                                        <img src="assets/images/brand/mitech-client-logo-08-hover.png" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide brand-logo brand-logo--slider">
-                                <a href="#">
-                                    <div class="brand-logo__image">
-                                        <img src="assets/images/brand/mitech-client-logo-09.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="brand-logo__image-hover">
-                                        <img src="assets/images/brand/mitech-client-logo-09-hover.png" class="img-fluid" alt="">
-                                    </div>
-                                </a>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -655,9 +279,9 @@
                         <span class="fal fa-phone"></span>
                     </div>
                     <h6 class="heading font-weight--reguler">Şimdi Arayın !</h6>
-                    <h6 class="call-us"><a href="tel:190068668">0 (555) 555 55 55</a></h6>
+                    <h6 class="call-us"><a href="tel:@StaticMember.AboutUs.PhoneNumber">@StaticMember.AboutUs.PhoneNumber</a></h6>
                     <div class="contact-us-button mt-20">
-                        <a href="#" class="btn btn--secondary">Ara</a>
+                        <a href="tel:@StaticMember.AboutUs.PhoneNumber" class="btn btn--secondary">Ara</a>
                     </div>
                 </div>
             </div>
@@ -667,9 +291,9 @@
                         <span class="fa fa-envelope"></span>
                     </div>
                     <h6 class="heading font-weight--reguler">Mail Gönderin !</h6>
-                    <h6 class="call-us"><a href="mailto:iletisim@klabsteknoloji.com">iletisim@klabsteknoloji.com</a></h6>
+                    <h6 class="call-us"><a href="mailto:@StaticMember.AboutUs.MailAddress">@StaticMember.AboutUs.MailAddress"</a></h6>
                     <div class="contact-us-button mt-20">
-                        <a href="#" class="btn btn--secondary">Mail Gönder</a>
+                        <a href="mailto:@StaticMember.AboutUs.MailAddress" class="btn btn--secondary">Mail Gönder</a>
                     </div>
                 </div>
             </div>
@@ -677,3 +301,9 @@
     </div>
 </div>
 <!--====================  Conact us Section End  ====================-->
+@section scripts{
+    <script type="text/javascript">
+        var solutionCount = '@StaticMember.MenuModels.Count(s=>s.MenuType==MenuType.Solution)';
+    </script>
+    <script src="~/js/Home/home.js"></script>
+}

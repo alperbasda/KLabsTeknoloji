@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using KLabs.Business.Abstract;
+﻿using KLabs.Business.Abstract;
 using KLabs.Entities.Concrete;
 using KLabs.WebUI.Extensions.ControllerExtensions;
 using Microsoft.AspNetCore.Mvc;

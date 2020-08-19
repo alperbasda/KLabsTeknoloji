@@ -36,6 +36,8 @@ namespace KLabs.Business.Modules.AutoFac
 
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
+            builder.RegisterType<CacheManager>().As<ICacheService>();
+
             builder.RegisterType<KLabsContext>().As<DbContext>();
             builder.RegisterGeneric(typeof(QueryableRepositoryBase<>)).As(typeof(IQueryableRepositoryBase<>));
 

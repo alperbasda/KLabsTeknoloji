@@ -1,0 +1,74 @@
+﻿@model List<KLabs.Entities.ComplexTypes.Solution.HomePageSolutionModel>
+
+    <div class="row" id="hidden-item" style="display:none">
+
+        <div class="col-12">
+            <div class="row small-mt__30">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    if (i % 3 == 1)
+                    {
+                        <div class="col-lg-6 col-md-6  mt-30">
+                            <!-- Box large image warap Start -->
+                            <a asp-action="Index" asp-controller="Solution" asp-route-id="@Model[i].Id" class="box-large-image__two">
+                                <div class="box-large-image__two__box">
+                                    <div class="box-large-image__midea">
+                                        <div class="single-gallery__thum bg-item-images bg-img" data-bg="@Model[i].ImagePath"></div>
+                                    </div>
+
+                                    <div class="box-info">
+                                        <h5 class="heading">@Model[i].Name</h5>
+                                        <div class="box-more-info">
+                                            <div class="text">@Model[i].ShortDescription</div>
+                                            <div class="btn">
+                                                <i class="button-icon far fa-long-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- Box large image warap End -->
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-lg-3 col-md-6 mt-30">
+                            <!-- Box large image warap Start -->
+                            <a asp-action="Index" asp-controller="Solution" asp-route-id="@Model[i].Id" class="box-large-image__two">
+                                <div class="box-large-image__two__box">
+                                    <div class="box-large-image__midea">
+                                        <div class="single-gallery__thum bg-item-images bg-img" data-bg="@Model[i].ImagePath"></div>
+                                    </div>
+
+                                    <div class="box-info">
+                                        <h5 class="heading">@Model[i].Name</h5>
+                                        <div class="box-more-info">
+                                            <div class="text">@Model[i].ShortDescription</div>
+                                            <div class="btn">
+                                                <i class="button-icon far fa-long-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- Box large image warap End -->
+                        </div>
+                    }
+                }
+                
+
+                
+
+
+            </div>
+            
+        </div>
+        <script type="text/javascript">
+            var bgSelector = $(".bg-img");
+            bgSelector.each(function (index, elem) {
+                var element = $(elem),
+                    bgSource = element.data('bg');
+                element.css('background-image', 'url(' + bgSource + ')');
+            });
+        </script>
+    </div>

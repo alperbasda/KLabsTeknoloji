@@ -1,4 +1,103 @@
-﻿@{
-    ViewData["Title"] = "Anasayfa";
+﻿@using DevExtreme.AspNet.Mvc
+@using KLabs.Entities.Concrete
+@using KLabs.Entities.Enums
+@{
+    ViewData["Title"] = "Hizmetler";
 }
-Admin Anasayfa
+
+<script type="text/javascript">
+    function ready() {
+        setTooltips();
+    }
+</script>
+<div class="kt-portlet">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                Hizmet Listesi 
+            </h3>
+        </div>
+        <div class="kt-portlet__head-toolbar">
+            <div class="dropdown dropdown-inline">
+                <button type="button" class="btn btn-clean btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="flaticon-more-1"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" style="">
+                    <ul class="kt-nav">
+                        <li class="kt-nav__item">
+                            <a asp-area="Panel" asp-controller="Service" asp-action="CreateService" class="kt-nav__link">
+                                <i class="kt-nav__link-icon flaticon2-plus"></i>
+                                <span class="kt-nav__link-text">Yeni Hizmet Ekle</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kt-portlet__body">
+        @(Html.DevExtreme().DataGrid<Service>().ID("ServiceTable")
+                  .Columns(columns =>
+                  {
+                      columns.AddFor(s => s.Id).Caption("İşlemler").Alignment(HorizontalAlignment.Center)
+                          .AllowFiltering(false).AllowSorting(false)
+                          .CellTemplate(
+                                            @<text>
+                                                <div class="row">
+                                                    <div class="col-lg-1"></div>
+                                                    <div class="col-lg-2">
+                                                        <a data-toggle="kt-tooltip" title="" data-placement="bottom" data-original-title="Resmi Gör" data-fill-url="@Url.Action("ImageShowPartial", "Image",new{area="Panel"})?Id=<%=data.Id%>&ImageType=@ImageType.Service" onclick="FillBasicModal(this)">
+                                                            <i class="fa fa-eye" style="cursor: pointer; color: orangered"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-lg-1"></div>
+                                                    <div class="col-lg-2">
+                                                        <a data-toggle="kt-tooltip" title="" data-placement="bottom" data-original-title="Anasayfa Resmi Gör" data-fill-url="@Url.Action("ImageShowPartial", "Image",new{area="Panel"})?Id=<%=data.Id%>&ImageType=@ImageType.ServiceHomePage" onclick="FillBasicModal(this)">
+                                                            <i class="fa fa-meh-rolling-eyes" style="cursor: pointer; color: greenyellow"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-lg-1"></div>
+                                                    <div class="col-lg-2">
+                                                        <a data-toggle="kt-tooltip" title="" data-placement="bottom" data-original-title="Hizmet Bilgilerini Düzenle" href="@Url.Action("UpdateService", "Service",new{area="Panel"})?id=<%=value%>">
+                                                            <i class="fa fa-info-circle" style="cursor: pointer; color: blue"></i>
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="col-lg-1"></div>
+                                                    <div class="col-lg-2">
+                                                        <a data-href="@Url.Action("DeleteServiceJson", "Service",new{area="Panel"})?id=<%=value%>" data-message="Hizmet Silinecek Emin Misiniz ?" data-toggle="kt-tooltip" title="" data-placement="bottom" data-original-title="Hizmeti Sil" onclick="JsItemGridRefresh(this, 'ServiceTable')">
+                                                            <i class="fa fa-trash" style="color: red; cursor: pointer"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </text>);
+                      columns.AddFor(s => s.Name).Caption("Ad");
+                      columns.AddFor(s => s.Description).Caption("Açıklama.");
+                      columns.AddFor(s => s.CreationDate).Caption("O. Tarihi");
+                  })
+            .SearchPanel(searchPanel => searchPanel.Visible(true).Width(250).Placeholder("Buradan Arama Yapabilirsiniz..."))
+            .ElementAttr("IsDxGridTable", true)
+            .Export(export => export.Enabled(true))
+            .AllowColumnResizing(true)
+            .AllowColumnReordering(true)
+            .ColumnAutoWidth(true)
+            .GroupPanel(panel => panel.Visible(true).EmptyPanelText("Gruplamak istediğiniz kolonu sürükleyin"))
+            .RemoteOperations(true)
+            .NoDataText("Aradığınız kriterlere göre bir veri bulunamadı.")
+            .ShowBorders(true)
+            .HoverStateEnabled(true)
+            .RowAlternationEnabled(true)
+            .OnContentReady("ready")
+            .Paging(pager => pager.Enabled(true).PageSize(10))
+            .NoDataText("Görüntülenecek veri bulunamadı.")
+            .LoadPanel(load => load.Enabled(true).ShowIndicator(true).Text("Yükleniyor"))
+            .FilterRow(row => row.Visible(true).ApplyFilterText("Arama").ApplyFilter(GridApplyFilterMode.Auto))
+            .DataSource(ds => ds.Mvc()
+            .LoadAction("ServiceSource")
+            .Controller("Service")
+            .Area("Panel")
+            )
+            .Width("99%")
+            )
+    </div>
+</div>

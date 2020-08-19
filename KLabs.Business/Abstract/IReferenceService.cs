@@ -18,5 +18,7 @@ namespace KLabs.Business.Abstract
         DataResponse UpdateReference(Reference reference);
 
         DataResponse DeleteReference(Reference reference);
+
+        DataResponse HomePageReferences(int page);
     }
 }

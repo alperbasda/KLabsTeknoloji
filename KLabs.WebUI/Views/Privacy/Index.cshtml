@@ -1,4 +1,5 @@
-﻿@{
+﻿@model KLabs.Entities.Concrete.Privacy
+@{
     ViewData["Title"] = "Gizlilik Politikası";
 }
 @section Navigator{
@@ -31,9 +32,15 @@
                 <!-- section-title-wrap Start -->
                 <div class="section-title-wrap text-center section-space--mb_30">
                     <h3 class="heading mb-20">Gizliliğe <span class="text-color-primary">önem</span> veriyoruz, <br> işiniz bizim için <span class="text-color-primary">değerli.</span> </h3>
-                    <p class="title-dec-text">
-                        Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. 1960'larda Lorem Ipsum pasajları da içeren Letraset yapraklarının yayınlanması ile ve yakın zamanda Aldus PageMaker gibi Lorem Ipsum sürümleri içeren masaüstü yayıncılık yazılımları ile popüler olmuştur.
-                    </p>
+
+                        @foreach (var item in Model.Description.Split("&&"))
+                        {
+                            <p class="title-dec-text">
+                                @item
+                            </p>
+                            <br />
+                        }
+                    
                 </div>
                 <!-- section-title-wrap Start -->
             </div>

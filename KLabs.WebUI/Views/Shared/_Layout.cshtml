@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using KLabs.Business.Constants.Statics
+@using KLabs.Entities.Enums
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -36,14 +38,14 @@
                                     <li class="info-item">
                                         <a href="tel:01228899900" class="info-link">
                                             <i class="info-icon fa fa-phone"></i>
-                                            <span class="info-text"><strong>0 (555) 555 55 55</strong></span>
+                                            <span class="info-text"><strong>@StaticMember.AboutUs.PhoneNumber</strong></span>
 
                                         </a>
                                     </li>
                                     <li class="info-item">
                                         <a href="mailto:iletisim@klabsteknoloji.com" class="info-link">
                                             <i class="info-icon fa fa-envelope"></i>
-                                            <span class="info-text">iletisim@klabsteknoloji.com</span>
+                                            <span class="info-text">@StaticMember.AboutUs.MailAddress</span>
                                         </a>
 
                                     </li>
@@ -53,7 +55,7 @@
                                                 <b>Sitemiz Yapım Aşamasındadır</b>
                                             </span>*@
                                         <span class="info-text">
-                                            Eskişehir Karayolu 5. Km 2.Organize Sanayi Bölgesi Tasarım Teknokent Merkez - Kütahya | TÜRKİYE
+                                            @StaticMember.AboutUs.Address
                                         </span>
                                     </li>
                                 </ul>
@@ -72,7 +74,7 @@
                             <!-- brand logo -->
                             <div class="header__logo">
                                 <a asp-controller="Home" asp-action="Index">
-                                    <img src="~/assets/images/logo/logo-dark.png" class="img-fluid" alt="">
+                                    <img src="@StaticMember.LogoPath" class="img-fluid" alt="KlabsTeknoloji">
                                 </a>
                             </div>
 
@@ -109,20 +111,21 @@
                                                 </ul>
                                             </li>
                                             <li class="has-children has-children--multilevel-submenu">
-                                                <a href="#\"><span>Çözümlerimiz</span></a>
+                                                <a href="#/"><span>Çözümlerimiz</span></a>
                                                 <ul class="submenu">
-                                                    <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>K - Muhasebe</span></a></li>
-                                                    <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>K - Voc</span></a></li>
-
+                                                    @foreach (var solution in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Solution))
+                                                    {
+                                                        <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@solution.Id"><span>@solution.Name</span></a></li>
+                                                    }
                                                 </ul>
                                             </li>
                                             <li class="has-children has-children--multilevel-submenu">
-                                                <a href="#\"><span>Hizmetlerimiz</span></a>
+                                                <a href="#/"><span>Hizmetlerimiz</span></a>
                                                 <ul class="submenu">
-                                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Masaüstü Çözümler</span></a></li>
-                                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Web Çözümler</span></a></li>
-                                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Mobil Çözümler</span></a></li>
-                                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Yapay Zeka - Makine Öğrenmesi</span></a></li>
+                                                    @foreach (var service in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Service))
+                                                    {
+                                                        <li><a asp-controller="Service" asp-action="Index" asp-route-id="@service.Id"><span>@service.Name</span></a></li>
+                                                    }
                                                 </ul>
                                             </li>
                                             <li class="">
@@ -161,12 +164,12 @@
                 <div class="row footer-widget-wrapper">
                     <div class="col-lg-4 col-md-6 col-sm-6 footer-widget">
                         <div class="footer-widget__logo mb-30">
-                            <img src="~/assets/images/logo/dark-logo-160x48.png" class="img-fluid" alt="">
+                            <img src="@StaticMember.LogoPath" class="img-fluid" alt="">
                         </div>
                         <ul class="footer-widget__list">
-                            <li>Eskişehir Karayolu 5. Km 2.Organize Sanayi Bölgesi Tasarım Teknokent Merkez - Kütahya | TÜRKİYE</li>
-                            <li><a href="mailto:contact@aeroland.com" class="hover-style-link">iletisim@klabsteknoloji.com</a></li>
-                            <li><a href="tel:123344556" class="hover-style-link text-black font-weight--bold">0 (555) 555 55 55</a></li>
+                            <li>@StaticMember.AboutUs.Address</li>
+                            <li><a href="mailto:iletisim@klabsteknoloji.com" class="hover-style-link">@StaticMember.AboutUs.MailAddress</a></li>
+                            <li><a href="tel:@StaticMember.AboutUs.PhoneNumber" class="hover-style-link text-black font-weight--bold">@StaticMember.AboutUs.PhoneNumber</a></li>
                             <li><a href="http://www.klabsteknoloji.com" class="hover-style-link text-color-primary">www.klabsteknoloji.com</a></li>
                         </ul>
                     </div>
@@ -181,17 +184,22 @@
                     <div class="col-lg-2 col-md-4 col-sm-6 footer-widget">
                         <h6 class="footer-widget__title mb-20">Çözümlerimiz</h6>
                         <ul class="footer-widget__list">
-                            <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">K - Muhasebe</a></li>
-                            <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">K - Voc</a></li>
+
+                            @foreach (var solution in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Solution))
+                            {
+                                <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@solution.Id" class="hover-style-link">@solution.Name</a></li>
+                            }
+
                         </ul>
                     </div>
                     <div class="col-lg-2 col-md-4 col-sm-6 footer-widget">
                         <h6 class="footer-widget__title mb-20">Hizmetlerimiz</h6>
                         <ul class="footer-widget__list">
-                            <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">Masaüstü Çözümler</a></li>
-                            <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">Web Çözümler</a></li>
-                            <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">Mobil Çözümler</a></li>
-                            <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()" class="hover-style-link">Yapay Zeka - Makine Ögrenmesi</a></li>
+                            @foreach (var service in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Service))
+                            {
+                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@service.Id" class="hover-style-link">@service.Name</a></li>
+                            }
+
                         </ul>
                     </div>
 
@@ -208,22 +216,22 @@
                         <ul class="list ht-social-networks solid-rounded-icon">
 
                             <li class="item">
-                                <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="social-link hint--bounce hint--top hint--primary">
+                                <a href="@StaticMember.AboutUs.TwitterLink" target="_blank" aria-label="Twitter" class="social-link hint--bounce hint--top hint--primary">
                                     <i class="fab fa-twitter link-icon"></i>
                                 </a>
                             </li>
                             <li class="item">
-                                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-link hint--bounce hint--top hint--primary">
+                                <a href="@StaticMember.AboutUs.FacebookLink" target="_blank" aria-label="Facebook" class="social-link hint--bounce hint--top hint--primary">
                                     <i class="fab fa-facebook-f link-icon"></i>
                                 </a>
                             </li>
                             <li class="item">
-                                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-link hint--bounce hint--top hint--primary">
+                                <a href="@StaticMember.AboutUs.InsLink" target="_blank" aria-label="Instagram" class="social-link hint--bounce hint--top hint--primary">
                                     <i class="fab fa-instagram link-icon"></i>
                                 </a>
                             </li>
                             <li class="item">
-                                <a href="https://linkedin.com" target="_blank" aria-label="Linkedin" class="social-link hint--bounce hint--top hint--primary">
+                                <a href="@StaticMember.AboutUs.LinkedLink" target="_blank" aria-label="Linkedin" class="social-link hint--bounce hint--top hint--primary">
                                     <i class="fab fa-linkedin link-icon"></i>
                                 </a>
                             </li>
@@ -250,7 +258,7 @@
                             <!-- logo -->
                             <div class="logo">
                                 <a asp-controller="Home" asp-action="Index">
-                                    <img src="~/assets/images/logo/logo-dark.png" class="img-fluid" alt="">
+                                    <img src="@StaticMember.LogoPath" class="img-fluid" alt="">
                                 </a>
                             </div>
                         </div>
@@ -295,17 +303,19 @@
                         <li class="has-children">
                             <a href="#\"><span>Çözümlerimiz</span></a>
                             <ul class="sub-menu">
-                                <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>K - Muhasebe</span></a></li>
-                                <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>K - Voc</span></a></li>
+                                @foreach (var solution in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Solution))
+                                {
+                                    <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@solution.Id"><span>@solution.Name</span></a></li>
+                                }
                             </ul>
                         </li>
                         <li class="has-children">
                             <a href="#\"><span>Hizmetlerimiz</span></a>
                             <ul class="sub-menu">
-                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Masaüstü Çözümler</span></a></li>
-                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Web Çözümler</span></a></li>
-                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Mobil Çözümler</span></a></li>
-                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@Guid.NewGuid()"><span>Yapay Zeka - Makine Öğrenmesi</span></a></li>
+                                @foreach (var service in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Service))
+                                {
+                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@service.Id"><span>@service.Name</span></a></li>
+                                }
                             </ul>
                         </li>
                         <li class="">
@@ -324,7 +334,6 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/assets/js/plugins.js"></script>
     <script src="~/assets/js/vendor.js"></script>
-
     <script src="~/assets/js/main.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
