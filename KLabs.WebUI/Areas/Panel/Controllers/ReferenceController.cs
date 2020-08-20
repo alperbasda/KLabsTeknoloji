@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DevExtreme.AspNet.Mvc;
 using KLabs.Business.Abstract;
+using KLabs.Business.Constants.Statics;
 using KLabs.Entities.ComplexTypes.Image;
 using KLabs.Entities.Concrete;
 using KLabs.Entities.Enums;
@@ -19,9 +20,15 @@ namespace KLabs.WebUI.Areas.Panel.Controllers
     {
         private IReferenceService _referenceService;
 
-        public ReferenceController(IReferenceService referenceService)
+        public ReferenceController(IReferenceService referenceService,ICacheService cacheService)
         {
             _referenceService = referenceService;
+            if (string.IsNullOrEmpty(StaticMember.LogoPath))
+            {
+                cacheService.FillData();
+                ImageConfig.GetLogoPath();
+                ImageConfig.GetFavPath();
+            }
         }
 
         public IActionResult Index()

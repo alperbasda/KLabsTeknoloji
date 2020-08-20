@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KLabs.Business.Abstract;
+using KLabs.Business.Constants.Statics;
 using KLabs.Entities.ComplexTypes.Image;
 using KLabs.Entities.ComplexTypes.Solution;
 using KLabs.Entities.Enums;
@@ -17,9 +18,15 @@ namespace KLabs.WebUI.Controllers
     {
         private ISolutionService _solutionService;
 
-        public SolutionController(ISolutionService solutionService)
+        public SolutionController(ISolutionService solutionService,ICacheService cacheService)
         {
             _solutionService = solutionService;
+            if (string.IsNullOrEmpty(StaticMember.LogoPath))
+            {
+                cacheService.FillData();
+                ImageConfig.GetLogoPath();
+                ImageConfig.GetFavPath();
+            }
         }
 
         [Route("{name}/{id}")]

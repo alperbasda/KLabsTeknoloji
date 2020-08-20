@@ -40,9 +40,9 @@
             </div>
 
             <div class="col-lg-6 col-lg-6">
-                <div class="contact-form-wrap">
-                    <form id="contact-form" asp-controller="Home" asp-action="SendMail" method="post">
-                        <div class="contact-form">
+                <div>
+                    <form asp-controller="Home" asp-action="SendMail" method="post">
+                        <div>
                             <div class="contact-inner">
                                 @Html.TextBoxFor(s => s.Name, new { placeholder = "Adınız Soyadınız *" })
                                 @Html.ValidationMessageFor(s => s.Name)
@@ -66,12 +66,11 @@
                                 @Html.ValidationMessageFor(s => s.Description)
                             </div>
                             <div class="contact-inner">
-                                <div class="g-recaptcha" data-sitekey="6Lf5T8EZAAAAAKeGnl-MSewx1Jig1APGYFiRQgfc"></div>
+                                <div class="g-recaptcha" data-sitekey="6Le5X8EZAAAAANLAucoZjzAB6kIHoxxXy2fBubYc"></div>
                             </div>
 
                             <div class="submit-btn mt-20">
                                 <button class="ht-btn ht-btn-md" type="submit">Gönder</button>
-                                <p class="form-messege"></p>
                             </div>
                         </div>
                     </form>

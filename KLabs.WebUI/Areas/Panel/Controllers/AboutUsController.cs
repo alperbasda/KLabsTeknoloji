@@ -1,6 +1,8 @@
 ﻿using KLabs.Business.Abstract;
+using KLabs.Business.Constants.Statics;
 using KLabs.Entities.Concrete;
 using KLabs.WebUI.Extensions.ControllerExtensions;
+using KLabs.WebUI.Helpers.ImageHelper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KLabs.WebUI.Areas.Panel.Controllers
@@ -10,9 +12,15 @@ namespace KLabs.WebUI.Areas.Panel.Controllers
     {
         private IAboutUsService _aboutUsService;
 
-        public AboutUsController(IAboutUsService aboutUsService)
+        public AboutUsController(IAboutUsService aboutUsService,ICacheService cacheService)
         {
             _aboutUsService = aboutUsService;
+            if (string.IsNullOrEmpty(StaticMember.LogoPath))
+            {
+                cacheService.FillData();
+                ImageConfig.GetLogoPath();
+                ImageConfig.GetFavPath();
+            }
         }
 
         public IActionResult Index()

@@ -34,19 +34,19 @@ namespace KLabs.WebUI.Controllers
                 ImageConfig.GetLogoPath();
                 ImageConfig.GetFavPath();
             }
-                
+
         }
 
         public IActionResult Index()
         {
             List<HomePageServiceModel> models = new List<HomePageServiceModel>();
-            foreach (var service in StaticMember.MenuModels.Where(s=>s.MenuType==MenuType.Service))
+            foreach (var service in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Service))
             {
                 models.Add(new HomePageServiceModel
                 {
                     Name = service.Name,
                     ImagePath = ImageConfig.FileFirstPath(new ImageOperationAdminModel
-                        {Id = service.Id, ImageType = ImageType.ServiceHomePage}).ShowPath
+                    { Id = service.Id, ImageType = ImageType.ServiceHomePage }).ShowPath
                 });
             }
 
@@ -54,6 +54,7 @@ namespace KLabs.WebUI.Controllers
             return View(models);
         }
         [Route("MailGonder")]
+        [HttpPost]
         public async Task<IActionResult> SendMail(SendMailModel model)
         {
             if (!await CheckCaptcha())
@@ -78,6 +79,7 @@ namespace KLabs.WebUI.Controllers
 
             return RedirectToAction("ContactUs", "AboutUs", model);
         }
+
 
         private async Task<bool> CheckCaptcha()
         {
