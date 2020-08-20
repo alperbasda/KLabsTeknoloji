@@ -30,7 +30,7 @@ namespace KLabs.WebUI.Areas.Panel.Controllers
 
         public async Task<IActionResult> AddImage(ImageOperationAdminModel model)
         {
-            if (model.ImageType == ImageType.Logo)
+            if (model.ImageType == ImageType.Logo || model.ImageType == ImageType.FavIcon)
                 ImageConfig.DirectoryDelete(ImageConfig.Route(model));
 
             var response = new DataResponse();
@@ -44,7 +44,7 @@ namespace KLabs.WebUI.Areas.Panel.Controllers
                     return Json(response);
             }
 
-            if (model.ImageType == ImageType.Logo)
+            if (model.ImageType == ImageType.Logo || model.ImageType == ImageType.FavIcon)
                 StaticMember.LogoPath = response.Data.ToString();
 
             return Json(response);

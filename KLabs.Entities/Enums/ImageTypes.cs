@@ -7,6 +7,7 @@
         SolutionHomePage,
         Service,
         ServiceHomePage,
-        Logo
+        Logo,
+        FavIcon
     }
 }

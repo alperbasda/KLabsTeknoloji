@@ -1,8 +1,12 @@
 ﻿@using KLabs.Business.Constants.Statics
+@model KLabs.Entities.ComplexTypes.AboutUs.SendMailModel
 @{
     ViewData["Title"] = "İletişim";
+    ViewData["Keywords"] = "klabs teknoloji hakkımızda , iletisim sayfası";
+    ViewData["Description"] = "klabs teknoloji hakkımızda ve iletişim sayfası";
 }
-@section Navigator{ 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@section Navigator{
     <!-- breadcrumb-area start -->
     <div class="breadcrumb-area">
         <div class="container">
@@ -24,7 +28,7 @@
     <!-- breadcrumb-area end -->
 }
 
-    <!--====================  Contact us Section Start ====================-->
+<!--====================  Contact us Section Start ====================-->
 <div class="contact-us-section-wrappaer section-space--pt_100 section-space--pb_70">
     <div class="container">
         <div class="row align-items-center">
@@ -37,25 +41,34 @@
 
             <div class="col-lg-6 col-lg-6">
                 <div class="contact-form-wrap">
-                    <form id="contact-form" action="assets/php/mail.php" method="post">
+                    <form id="contact-form" asp-controller="Home" asp-action="SendMail" method="post">
                         <div class="contact-form">
                             <div class="contact-inner">
-                                <input name="con_name" type="text" placeholder="Adınız Soyadınız *">
+                                @Html.TextBoxFor(s => s.Name, new { placeholder = "Adınız Soyadınız *" })
+                                @Html.ValidationMessageFor(s => s.Name)
                             </div>
                             <div class="contact-input">
                                 <div class="contact-inner">
-                                    <input name="con_tel" type="tel" placeholder="Telefon Numaranız">
+                                    @Html.TextBoxFor(s => s.PhoneNumber, new { placeholder = "Telefon Numaranız *" })
+                                    @Html.ValidationMessageFor(s => s.PhoneNumber)
                                 </div>
                                 <div class="contact-inner">
-                                    <input name="con_email" type="email" placeholder="Mail Adresiniz *">
+                                    @Html.TextBoxFor(s => s.Email, new { placeholder = "Mail Adresiniz *" })
+                                    @Html.ValidationMessageFor(s => s.Email)
                                 </div>
                             </div>
                             <div class="contact-inner">
-                                <input name="con_subject" type="text" placeholder="Konu *">
+                                @Html.TextBoxFor(s => s.Subject, new { placeholder = "Konu *" })
+                                @Html.ValidationMessageFor(s => s.Subject)
                             </div>
                             <div class="contact-inner contact-message">
-                                <textarea name="con_message" placeholder="Size Nasıl Yardımcı Olabiliriz *"></textarea>
+                                @Html.TextAreaFor(s => s.Description, new { placeholder = "Size Nasıl Yardımcı Olabiliriz *", rows = 5 })
+                                @Html.ValidationMessageFor(s => s.Description)
                             </div>
+                            <div class="contact-inner">
+                                <div class="g-recaptcha" data-sitekey="6Lf5T8EZAAAAAKeGnl-MSewx1Jig1APGYFiRQgfc"></div>
+                            </div>
+
                             <div class="submit-btn mt-20">
                                 <button class="ht-btn ht-btn-md" type="submit">Gönder</button>
                                 <p class="form-messege"></p>

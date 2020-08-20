@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KLabs.WebUI.Controllers
 {
+    [Route("Gizlilik")]
     public class PrivacyController : Controller
     {
         private IPrivacyService _privacyService;
@@ -17,6 +18,7 @@ namespace KLabs.WebUI.Controllers
             _privacyService = privacyService;
         }
 
+        [Route("")]
         public IActionResult Index()
         {
             var response = _privacyService.GetPrivacy();

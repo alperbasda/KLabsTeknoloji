@@ -1,18 +1,34 @@
 ﻿@using KLabs.Business.Constants.Statics
 @using KLabs.Entities.Enums
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Klabs Teknoloji Firma Tanıtım Sayfasi.  @ViewData["Description"] ">
+    <meta name="author" content="klabsteknoloji.com">
+    <meta name="robots">
+    <meta name="keywords" content="klabs teknoloji, @ViewData["Keywords"]">
     <title>@ViewData["Title"] - KLabs Teknoloji</title>
+    <link rel="shortcut icon" type="image/png" href="@StaticMember.FavPath" />
 
     <link href="~/assets/css/vendor.min.css" rel="stylesheet" />
     <link href="~/assets/css/plugins.min.css" rel="stylesheet" />
     <link href="~/assets/css/style.min.css" rel="stylesheet" />
+    <link href="~/css/fancybox/jquery.fancybox.min.css" rel="stylesheet" />
+    <link href="~/assets/css/toastr.min.css" rel="stylesheet" />
 </head>
 <body>
-
+    <!-- begin::Notify -->
+    @if (TempData["Error"] != null)
+    {
+        <input type="text" id="error" hidden="hidden" value="@TempData["Error"]" />
+    }
+    else if (TempData["Success"] != null)
+    {
+        <input type="text" id="success" hidden="hidden" value="@TempData["Success"]" />
+    }
+    <!-- end::Notify -->
     <div id="preloader" class="preloader-activate preloader-active open_tm_preloader">
         <div class="preloader-area-wrap">
             <div class="spinner d-flex justify-content-center align-items-center h-100">
@@ -90,21 +106,7 @@
                                             <li class="has-children has-children--multilevel-submenu">
                                                 <a href="#\"><span>Kurumsal</span></a>
                                                 <ul class="submenu">
-                                                    <!--<li class="has-children">
-                                                        <a href="about-us-01.html"><span>About us</span></a>
-                                                        <ul class="submenu">
-                                                            <li><a href="about-us-01.html"><span>About us 01</span></a></li>
-                                                            <li><a href="about-us-02.html"><span>About us 02</span></a></li>
-                                                            <li class="has-children">
-                                                                <a href="#"><span>Submenu Level Two</span></a>
-                                                                <ul class="submenu">
-                                                                    <li><a href="#"><span>Submenu Level Three</span></a></li>
-                                                                    <li><a href="#"><span>Submenu Level Three</span></a></li>
-                                                                    <li><a href="#"><span>Submenu Level Three</span></a></li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </li>-->
+
                                                     <li><a asp-action="Index" asp-controller="AboutUs"><span>Hakkımızda</span></a></li>
                                                     <li><a asp-action="Index" asp-controller="Privacy"><span>Gizlilik Politikası</span></a></li>
 
@@ -115,7 +117,7 @@
                                                 <ul class="submenu">
                                                     @foreach (var solution in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Solution))
                                                     {
-                                                        <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@solution.Id"><span>@solution.Name</span></a></li>
+                                                        <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@solution.Id" asp-route-name="@solution.Name.Replace(" ","_")"><span>@solution.Name</span></a></li>
                                                     }
                                                 </ul>
                                             </li>
@@ -124,7 +126,7 @@
                                                 <ul class="submenu">
                                                     @foreach (var service in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Service))
                                                     {
-                                                        <li><a asp-controller="Service" asp-action="Index" asp-route-id="@service.Id"><span>@service.Name</span></a></li>
+                                                        <li><a asp-controller="Service" asp-action="Index" asp-route-id="@service.Id" asp-route-name="@service.Name.Replace(" ","_")"><span>@service.Name</span></a></li>
                                                     }
                                                 </ul>
                                             </li>
@@ -187,7 +189,7 @@
 
                             @foreach (var solution in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Solution))
                             {
-                                <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@solution.Id" class="hover-style-link">@solution.Name</a></li>
+                                <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@solution.Id" asp-route-name="@solution.Name.Replace(" ","_")" class="hover-style-link">@solution.Name</a></li>
                             }
 
                         </ul>
@@ -197,7 +199,7 @@
                         <ul class="footer-widget__list">
                             @foreach (var service in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Service))
                             {
-                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@service.Id" class="hover-style-link">@service.Name</a></li>
+                                <li><a asp-controller="Service" asp-action="Index" asp-route-id="@service.Id" asp-route-name="@service.Name.Replace(" ","_")" class="hover-style-link">@service.Name</a></li>
                             }
 
                         </ul>
@@ -280,21 +282,7 @@
                         <li class="has-children">
                             <a href="#\"><span>Kurumsal</span></a>
                             <ul class="sub-menu">
-                                <!--<li class="has-children">
-                                    <a href="about-us-01.html"><span>About us</span></a>
-                                    <ul class="submenu">
-                                        <li><a href="about-us-01.html"><span>About us 01</span></a></li>
-                                        <li><a href="about-us-02.html"><span>About us 02</span></a></li>
-                                        <li class="has-children">
-                                            <a href="#"><span>Submenu Level Two</span></a>
-                                            <ul class="submenu">
-                                                <li><a href="#"><span>Submenu Level Three</span></a></li>
-                                                <li><a href="#"><span>Submenu Level Three</span></a></li>
-                                                <li><a href="#"><span>Submenu Level Three</span></a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>-->
+
                                 <li><a asp-action="Index" asp-controller="AboutUs"><span>Hakkımızda</span></a></li>
                                 <li><a asp-action="Index" asp-controller="Privacy"><span>Gizlilik Politikası</span></a></li>
 
@@ -305,7 +293,7 @@
                             <ul class="sub-menu">
                                 @foreach (var solution in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Solution))
                                 {
-                                    <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@solution.Id"><span>@solution.Name</span></a></li>
+                                    <li><a asp-controller="Solution" asp-action="Index" asp-route-id="@solution.Id" asp-route-name="@solution.Name.Replace(" ","_")"><span>@solution.Name</span></a></li>
                                 }
                             </ul>
                         </li>
@@ -314,7 +302,7 @@
                             <ul class="sub-menu">
                                 @foreach (var service in StaticMember.MenuModels.Where(s => s.MenuType == MenuType.Service))
                                 {
-                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@service.Id"><span>@service.Name</span></a></li>
+                                    <li><a asp-controller="Service" asp-action="Index" asp-route-id="@service.Id" asp-route-name="@service.Name.Replace(" ","_")"><span>@service.Name</span></a></li>
                                 }
                             </ul>
                         </li>
@@ -335,6 +323,9 @@
     <script src="~/assets/js/plugins.js"></script>
     <script src="~/assets/js/vendor.js"></script>
     <script src="~/assets/js/main.js"></script>
+    <script src="~/js/fancybox/jquery.fancybox.min.js"></script>
+    <script src="~/js/toastr/toast.js"></script>
+    <script src="~/js/toastr/toastr.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

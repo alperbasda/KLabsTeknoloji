@@ -3,6 +3,8 @@
 @model List<KLabs.Entities.ComplexTypes.Service.HomePageServiceModel>
 @{
     ViewData["Title"] = "Anasayfa";
+    ViewData["Keywords"] = "klabs teknoloji yazılım firması, Eskişehir yazılım firması, Kütahya yazılım firması";
+    ViewData["Description"] = "klabs teknoloji anasayfa. Kütahya yazılım firması. Eskişehir yazılım firması. Web sitesi ve otomasyon yaptırmak istiyorsanız en doğru adrestesiniz. ";
 }
 
 @section Navigator{ 
@@ -177,7 +179,7 @@
                             
                             <div class="single-item wow move-up col-lg-6 col-md-6 section-space--mt_60  small-mt__40">
                                 <!-- ht-box-icon Start -->
-                                <a href="#" class="ht-box-images style-02">
+                                <a asp-controller="Service" asp-action="Index" asp-route-name="@service.Name.Replace(" ","_")" asp-route-id="@service.Id" class="ht-box-images style-02">
                                     <div class="image-box-wrap">
                                         <div class="box-image">
                                             <img class="img-fulid" src="@service.ImagePath" alt="Klabs Teknoloji @service.Name">

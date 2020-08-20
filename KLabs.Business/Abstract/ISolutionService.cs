@@ -20,5 +20,7 @@ namespace KLabs.Business.Abstract
         DataResponse StaticSolutions();
 
         DataResponse HomePageSolutions(int page);
+
+        DataResponse SolutionDetail(Guid id);
     }
 }

@@ -118,7 +118,7 @@ namespace KLabs.Business.Concrete
 
         public DataResponse HomePageReferences(int page)
         {
-            var take = 6;
+            var take = 8;
             var skip = take * page;
             return new DataResponse
             {
@@ -128,5 +128,6 @@ namespace KLabs.Business.Concrete
                 StatusCode = HttpStatusCode.OK
             };
         }
+
     }
 }

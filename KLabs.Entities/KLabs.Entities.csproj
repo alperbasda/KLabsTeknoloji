@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ComplexTypes\AboutUs\" />
     <Folder Include="ComplexTypes\Privacy\" />
   </ItemGroup>
 

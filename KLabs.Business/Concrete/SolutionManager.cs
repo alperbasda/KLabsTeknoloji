@@ -176,5 +176,25 @@ namespace KLabs.Business.Concrete
             };
             
         }
+
+        public DataResponse SolutionDetail(Guid id)
+        {
+            var solution = _solutionDal.Get(s => s.Id == id);
+            if(solution==null)
+                return new DataResponse
+                {
+                    Success = false,
+                    Message = "Çözüm İçeriği Bulunamadı",
+                    StatusCode = HttpStatusCode.BadRequest
+                };
+
+            return new DataResponse
+            {
+                Success = true,
+                Message = "Çözüm Detayı",
+                StatusCode = HttpStatusCode.OK,
+                Data = _mapper.Map<SolutionDetailPageModel>(solution)
+            };
+        }
     }
 }

@@ -1,5 +1,8 @@
-﻿@{
+﻿@model List<KLabs.Entities.ComplexTypes.Reference.HomePageReferenceSwiperModel>
+@{
     ViewData["Title"] = "Referanslarımız";
+    ViewData["Keywords"] = "klabs teknoloji yazılım firması, Eskişehir yazılım firması, Kütahya yazılım firması,klabs teknoloji referanslar";
+    ViewData["Description"] = "klabs teknoloji anasayfa. Kütahya yazılım firması. Eskişehir yazılım firması. klabs teknoloji referanslar. ";
 }
 @section Navigator{
     <!-- breadcrumb-area start -->
@@ -38,34 +41,44 @@
         <div class="row">
             <div class="col-12">
                 <div class="feature-list__one">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <!-- ht-box-icon Start -->
-                            <div class="ht-box-icon style-01 single-svg-icon-box">
-                                <div class="icon-box-wrap">
-                                    <div class="icon">
-
-                                        <img src="assets/images/svg/linea-basic-heart.svg" alt="">
-
-                                        <!--<div class="svg-icon" id="svg-icon-1" data-svg-icon="assets/images/svg/linea-basic-heart.svg"></div>-->
-                                    </div>
-                                    <div class="content">
-                                        <h5 class="heading">IT Design </h5>
-                                        <div class="text">
-                                            We provide the most responsive and functional IT design for companies and businesses worldwide.
+                    <div class="row" id="load-references">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-3 col-md-6">
+                                <!-- ht-box-icon Start -->
+                                <div class="ht-box-icon style-01">
+                                    <div class="icon-box-wrap">
+                                        <div class="icon">
+                                            <img src="@item.LogoPath" alt="@item.Name">
                                         </div>
-                                        <div class="feature-btn">
-                                            <a href="#">
-                                                <span class="button-text">Discover now</span>
-                                                <i class="far fa-long-arrow-right"></i>
-                                            </a>
+                                        <div class="content">
+                                            <h5 class="heading">@item.Name </h5>
+                                            <div class="text">
+                                                @item.Description
+                                            </div>
+                                            <div class="feature-btn">
+                                                <a target="_blank" href="@item.Description">
+                                                    <span class="button-text">Siteye Git</span>
+                                                    <i class="far fa-long-arrow-right"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- ht-box-icon End -->
                             </div>
-                            <!-- ht-box-icon End -->
+                        }
+
+
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="feature-list-button-box mt-40 text-center">
+                            @if (Model.Count == 8)
+                            {
+                                <a class="ht-btn ht-btn-md btn-primary" style="color:white" id="load-more" onclick="loadMore()">Devamını Gör</a>
+                            }
+
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -87,7 +100,12 @@
                     </h4>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
+@section scripts{
+
+    <script src="~/js/Reference/Reference.js"></script>
+
+}

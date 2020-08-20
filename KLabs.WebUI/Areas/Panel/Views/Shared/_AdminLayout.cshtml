@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    
     <title>@ViewData["Title"] - KLabs Teknoloji Panel</title>
-    <link rel="shortcut icon" type="image/png" href="#" />
+    <link rel="shortcut icon" type="image/png" href="@ImageConfig.GetFavPath()" />
     <link href="~/css/devextreme/dx.common.css" rel="stylesheet" />
 
     <link href="~/css/devextreme/dx.light.css" rel="stylesheet" />
@@ -116,13 +116,14 @@
                     <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 
                         <ul class="kt-menu__nav">
-                            <li class="kt-menu__item " aria-haspopup="true"><a href="@Url.Action("Index", "Home")" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-home"></i><span class="kt-menu__link-text">Anasayfa</span></a></li>
+                            <li class="kt-menu__item" aria-haspopup="true"><a href="@Url.Action("Index", "Home")" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-home"></i><span class="kt-menu__link-text">Anasayfa</span></a></li>
 
                             <li class="kt-menu__section ">
                                 <h4 class="kt-menu__section-text">Site İşlemleri</h4>
                                 <i class="kt-menu__section-icon flaticon-more-v2"></i>
                             </li>
                             <li class="kt-menu__item " aria-haspopup="true"><a data-fill-url="@Url.Action("ImageShowPartial", "Image",new{area="Panel"})?ImageType=@ImageType.Logo" onclick="FillBasicModal(this)" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-2"></i><span class="kt-menu__link-text">Logo Düzenle</span></a></li>
+                            <li class="kt-menu__item " aria-haspopup="true"><a data-fill-url="@Url.Action("ImageShowPartial", "Image",new{area="Panel"})?ImageType=@ImageType.FavIcon" onclick="FillBasicModal(this)" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-2"></i><span class="kt-menu__link-text">Fav İcon Düzenle</span></a></li>
                             <li class="kt-menu__item " aria-haspopup="true"><a asp-area="Panel" asp-controller="AboutUs" asp-action="Index" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-3"></i><span class="kt-menu__link-text">Hakkımızda & İletişim </span></a></li>
                             <li class="kt-menu__item " aria-haspopup="true"><a asp-area="Panel" asp-controller="Privacy" asp-action="Index" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-list-2"></i><span class="kt-menu__link-text">Gizlilik Politikası</span></a></li>
 

@@ -6,6 +6,7 @@ namespace KLabs.WebUI.Helpers.ClaimHelper
 {
     public static class ClaimHelper
     {
+
         public static Claim[] ClaimFromUser(User user, List<string> roles)
         {
             return new[] {

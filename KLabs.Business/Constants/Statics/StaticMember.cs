@@ -10,6 +10,8 @@ namespace KLabs.Business.Constants.Statics
 
         public static string LogoPath { get; set; }
 
+        public static string FavPath { get; set; }
+
         public static List<SolutionServiceModel> MenuModels = new List<SolutionServiceModel>();
     }
 }

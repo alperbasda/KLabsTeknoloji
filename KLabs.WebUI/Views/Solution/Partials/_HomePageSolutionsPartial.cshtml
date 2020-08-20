@@ -10,7 +10,7 @@
                     {
                         <div class="col-lg-6 col-md-6  mt-30">
                             <!-- Box large image warap Start -->
-                            <a asp-action="Index" asp-controller="Solution" asp-route-id="@Model[i].Id" class="box-large-image__two">
+                            <a asp-action="Index" asp-controller="Solution" asp-route-id="@Model[i].Id" asp-route-name="@Model[i].Name.Replace(" ","_")" class="box-large-image__two">
                                 <div class="box-large-image__two__box">
                                     <div class="box-large-image__midea">
                                         <div class="single-gallery__thum bg-item-images bg-img" data-bg="@Model[i].ImagePath"></div>
@@ -34,7 +34,7 @@
                     {
                         <div class="col-lg-3 col-md-6 mt-30">
                             <!-- Box large image warap Start -->
-                            <a asp-action="Index" asp-controller="Solution" asp-route-id="@Model[i].Id" class="box-large-image__two">
+                            <a asp-action="Index" asp-controller="Solution" asp-route-id="@Model[i].Id" asp-route-name="@Model[i].Name.Replace(" ","_")" class="box-large-image__two">
                                 <div class="box-large-image__two__box">
                                     <div class="box-large-image__midea">
                                         <div class="single-gallery__thum bg-item-images bg-img" data-bg="@Model[i].ImagePath"></div>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using AutoMapper;
 using DevExtreme.AspNet.Mvc;
 using KLabs.Business.Abstract;
 using KLabs.Business.Constants.Statics;
@@ -8,6 +9,7 @@ using KLabs.Business.Extensions.DevExtremeQueryableExtension;
 using KLabs.Core.DataAccess.Abstract;
 using KLabs.DataAccess.Abstract;
 using KLabs.Entities.ComplexTypes;
+using KLabs.Entities.ComplexTypes.Service;
 using KLabs.Entities.Concrete;
 using KLabs.Entities.Enums;
 using KLabs.Entities.Responses;
@@ -19,11 +21,13 @@ namespace KLabs.Business.Concrete
     {
         private IServiceDal _serviceDal;
         private IQueryableRepositoryBase<Service> _queryable;
+        private IMapper _mapper;
 
-        public ServiceManager(IServiceDal serviceDal, IQueryableRepositoryBase<Service> queryable)
+        public ServiceManager(IServiceDal serviceDal, IQueryableRepositoryBase<Service> queryable, IMapper mapper)
         {
             _serviceDal = serviceDal;
             _queryable = queryable;
+            _mapper = mapper;
         }
 
         public DataResponse ServiceList(DataSourceLoadOptions loadOptions)
@@ -156,6 +160,26 @@ namespace KLabs.Business.Concrete
                 }).ToList()
             };
 
+        }
+
+        public DataResponse ServiceDetail(Guid id)
+        {
+            var service = _serviceDal.Get(s => s.Id == id);
+            if (service == null)
+                return new DataResponse
+                {
+                    Success = false,
+                    Message = "Hizmet İçeriği Bulunamadı",
+                    StatusCode = HttpStatusCode.BadRequest
+                };
+
+            return new DataResponse
+            {
+                Success = true,
+                Message = "Hizmet Detayı",
+                StatusCode = HttpStatusCode.OK,
+                Data = _mapper.Map<ServiceDetailPageModel>(service)
+            };
         }
     }
 }

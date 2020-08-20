@@ -18,5 +18,7 @@ namespace KLabs.Business.Abstract
         DataResponse DeleteService(Service service);
 
         DataResponse StaticServices();
+
+        DataResponse ServiceDetail(Guid id);
     }
 }

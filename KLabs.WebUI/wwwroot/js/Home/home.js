@@ -14,7 +14,7 @@ function loadMore() {
 
     if (solutionCount > solutionPage * 3) {
         $("#load-more").html("Yükleniyor...");
-        $.get('../../Solution/HomePageSolutionsPartial?page=' + solutionPage, function (data) {
+        $.get('../../Cozumler/AnasayfaPartial?page=' + solutionPage, function (data) {
             $('#load-solutions').append($(data));
             $('#hidden-item').show('slow');
             $('#hidden-item').removeAttr('id');
@@ -29,7 +29,7 @@ function loadMore() {
                 toastr.error('İşlem Sırasında Hata Oluştu Lütfen Tekrar Deneyin.');
             })
             .always(function () {
-                $('#loading').css('display', 'none');
+                
             });
         if (Math.abs(solutionCount - solutionPage * 3) <= 3)
             endOfSolutions();
@@ -96,7 +96,7 @@ function loadSwiper() {
 }
 
 function fillSwiperData() {
-    $.get('../../Reference/ReferenceJson?page=' + referencePage,
+    $.get('../../Referans/ReferansJson?page=' + referencePage,
         function (data) {
             if (data.length > 0) {
                 $.each(data,

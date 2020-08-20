@@ -7,12 +7,14 @@ using KLabs.Business.Abstract;
 using KLabs.Entities.ComplexTypes.Image;
 using KLabs.Entities.ComplexTypes.Reference;
 using KLabs.Entities.Enums;
+using KLabs.WebUI.Extensions.ControllerExtensions;
 using KLabs.WebUI.Helpers.ImageHelper;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace KLabs.WebUI.Controllers
 {
+    [Route("Referans")]
     public class ReferenceController : Controller
     {
         private IReferenceService _referenceService;
@@ -21,12 +23,18 @@ namespace KLabs.WebUI.Controllers
         {
             _referenceService = referenceService;
         }
-
+        [Route("")]
         public IActionResult Index()
         {
-            return View();
-        }
+            var response = _referenceService.HomePageReferences(0);
+            if (!response.Success) 
+                return RedirectToAction("Index", "Home").Error(response.Message);
+            
+            FillReferenceLogos((List<HomePageReferenceSwiperModel>)response.Data);
+            return View(response.Data);
 
+        }
+        [Route("ReferansJson")]
         public IActionResult ReferenceJson(int page)
         {
             var response = _referenceService.HomePageReferences(page);
@@ -37,12 +45,12 @@ namespace KLabs.WebUI.Controllers
             return Json(response.Data);
         }
 
-        public void FillReferenceLogos(List<HomePageReferenceSwiperModel> models)
+        private void FillReferenceLogos(List<HomePageReferenceSwiperModel> models)
         {
             foreach (var reference in models)
             {
                 reference.LogoPath = ImageConfig.FileFirstPath(new ImageOperationAdminModel
-                    { Id = reference.Id, ImageType = ImageType.Reference }).ShowPath;
+                { Id = reference.Id, ImageType = ImageType.Reference }).ShowPath;
             }
         }
 
