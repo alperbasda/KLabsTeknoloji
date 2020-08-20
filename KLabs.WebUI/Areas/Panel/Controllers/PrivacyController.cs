@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KLabs.Business.Abstract;
+using KLabs.Business.Constants.Statics;
 using KLabs.DataAccess.Abstract;
 using KLabs.Entities.Concrete;
 using KLabs.WebUI.Extensions.ControllerExtensions;
+using KLabs.WebUI.Helpers.ImageHelper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KLabs.WebUI.Areas.Panel.Controllers
@@ -15,9 +17,15 @@ namespace KLabs.WebUI.Areas.Panel.Controllers
     {
         private IPrivacyService _privacyService;
 
-        public PrivacyController(IPrivacyService privacyService)
+        public PrivacyController(IPrivacyService privacyService,ICacheService cacheService)
         {
             _privacyService = privacyService;
+            if (string.IsNullOrEmpty(StaticMember.LogoPath))
+            {
+                cacheService.FillData();
+                ImageConfig.GetLogoPath();
+                ImageConfig.GetFavPath();
+            }
         }
 
         public IActionResult Index()

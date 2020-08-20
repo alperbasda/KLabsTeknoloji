@@ -1,6 +1,7 @@
 ﻿using System;
 using DevExtreme.AspNet.Mvc;
 using KLabs.Business.Abstract;
+using KLabs.Business.Constants.Statics;
 using KLabs.Entities.ComplexTypes.Image;
 using KLabs.Entities.Concrete;
 using KLabs.Entities.Enums;
@@ -16,9 +17,15 @@ namespace KLabs.WebUI.Areas.Panel.Controllers
     {
         private ISolutionService _solutionService;
 
-        public SolutionController(ISolutionService solutionService)
+        public SolutionController(ISolutionService solutionService, ICacheService cacheService)
         {
             _solutionService = solutionService;
+            if (string.IsNullOrEmpty(StaticMember.LogoPath))
+            {
+                cacheService.FillData();
+                ImageConfig.GetLogoPath();
+                ImageConfig.GetFavPath();
+            }
         }
 
         public IActionResult Index()

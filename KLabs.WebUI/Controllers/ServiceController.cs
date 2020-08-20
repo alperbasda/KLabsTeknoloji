@@ -1,5 +1,6 @@
 ﻿using System;
 using KLabs.Business.Abstract;
+using KLabs.Business.Constants.Statics;
 using KLabs.Entities.ComplexTypes.Image;
 using KLabs.Entities.ComplexTypes.Service;
 using KLabs.Entities.Enums;
@@ -14,9 +15,15 @@ namespace KLabs.WebUI.Controllers
     {
         private IServiceService _serviceService;
 
-        public ServiceController(IServiceService serviceService)
+        public ServiceController(IServiceService serviceService,ICacheService cacheService)
         {
             _serviceService = serviceService;
+            if (string.IsNullOrEmpty(StaticMember.LogoPath))
+            {
+                cacheService.FillData();
+                ImageConfig.GetLogoPath();
+                ImageConfig.GetFavPath();
+            }
         }
 
         [Route("{name}/{id}")]

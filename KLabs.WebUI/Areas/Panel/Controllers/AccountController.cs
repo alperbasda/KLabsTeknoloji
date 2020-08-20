@@ -4,10 +4,12 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using KLabs.Business.Abstract;
+using KLabs.Business.Constants.Statics;
 using KLabs.Entities.ComplexTypes.User;
 using KLabs.Entities.Concrete;
 using KLabs.WebUI.Extensions.ControllerExtensions;
 using KLabs.WebUI.Helpers.ClaimHelper;
+using KLabs.WebUI.Helpers.ImageHelper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -19,9 +21,15 @@ namespace KLabs.WebUI.Areas.Panel.Controllers
     {
         private IUserService _userService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService,ICacheService cacheService)
         {
             _userService = userService;
+            if (string.IsNullOrEmpty(StaticMember.LogoPath))
+            {
+                cacheService.FillData();
+                ImageConfig.GetLogoPath();
+                ImageConfig.GetFavPath();
+            }
         }
 
 
