@@ -47,7 +47,7 @@ namespace KLabs.WebUI.Areas.Panel.Controllers
 
 
 
-        [HttpPost]
+        
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(

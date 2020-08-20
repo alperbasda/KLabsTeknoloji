@@ -12,11 +12,7 @@
     <title>@ViewData["Title"] - KLabs Teknoloji</title>
     <link rel="shortcut icon" type="image/png" href="@StaticMember.FavPath" />
 
-    <link href="~/assets/css/vendor.min.css" rel="stylesheet" />
-    <link href="~/assets/css/plugins.min.css" rel="stylesheet" />
-    <link href="~/assets/css/style.min.css" rel="stylesheet" />
-    <link href="~/css/fancybox/jquery.fancybox.min.css" rel="stylesheet" />
-    <link href="~/assets/css/toastr.min.css" rel="stylesheet" />
+    <link href="~/assets/css/bundle.css" rel="stylesheet" />
 </head>
 <body>
     <!-- begin::Notify -->
@@ -319,13 +315,8 @@
         </div>
     </div>
     <!--====================  End of mobile menu overlay  ====================-->
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/assets/js/plugins.js"></script>
-    <script src="~/assets/js/vendor.js"></script>
-    <script src="~/assets/js/main.js"></script>
-    <script src="~/js/fancybox/jquery.fancybox.min.js"></script>
-    <script src="~/js/toastr/toast.js"></script>
-    <script src="~/js/toastr/toastr.js"></script>
+    <script src="~/assets/js/bundle.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
 
 namespace KLabs.WebUI
 {
@@ -31,7 +32,7 @@ namespace KLabs.WebUI
 
         public IConfiguration Configuration { get; }
 
-        
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -68,7 +69,15 @@ namespace KLabs.WebUI
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    OnPrepareResponse = ctx =>
+            //    {
+            //        const int durationInSeconds = 60 * 60 * 24 * 30;
+            //        ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+            //            "public,max-age=" + durationInSeconds;
+            //    }
+            //});
 
             app.UseRouting();
 
@@ -85,7 +94,7 @@ namespace KLabs.WebUI
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                
+
             });
 
         }

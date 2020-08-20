@@ -8,7 +8,7 @@ namespace KLabs.WebUI.Helpers.MailHelper
     public class SendMail
     {
 
-        public readonly string ReCaptcha = "6Lf5T8EZAAAAAPWYjGZfJOUn_4cSOLmB3iuePbLl";
+        public readonly string ReCaptcha = "6Le5X8EZAAAAAHrRIk0DTdGToZcYnjKT3OySOWU7";
 
         private readonly IConfigurationRoot _configuration;
         private MailOptions _options;
@@ -35,7 +35,8 @@ namespace KLabs.WebUI.Helpers.MailHelper
                 mail.Subject = model.Subject;
 
                 mail.IsBodyHtml = true;
-                mail.Body = $"{model.Description} <br/><br/> Kimden {model.Name} <br/><br/>  Telefon  {model.PhoneNumber} <br/><br/> Mail Adresi :  {model.Email}";
+                mail.Body =
+                    $"{model.Description} <br/><br/> Kimden : {model.Name} <br/><br/>  Telefon : {model.PhoneNumber} <br/><br/> Mail Adresi : {model.Email}";
 
                 System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(_options.SmtpClient, 587);
                 smtp.UseDefaultCredentials = false;
